@@ -9,9 +9,9 @@ const controller = {
   },
 
   getOne: (req, res) => {
-    const _id = req.params;
+    const id = req.params;
     dbHelpers
-      .getOne(_id)
+      .getOne(id)
       .then(data => res.status(200).send(data))
       .catch(err => console.error(err));
   }

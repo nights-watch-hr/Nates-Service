@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const db = require('./index');
 
 const trackSchema = mongoose.Schema({
+  id: { type: Number, allowNull: false, unique: true },
   title: { type: String, allowNull: false },
   version: { type: String, allowNull: false },
   artist: { type: String, allowNull: false },
