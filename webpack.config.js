@@ -1,11 +1,11 @@
 const path = require('path');
 const combinedLoaders = require('webpack-combine-loaders');
-const SRC_DIR = path.join(__dirname, '/client/src');
+const SRC_DIR = path.join(__dirname, '/client/index.jsx');
 const DIST_DIR = path.join(__dirname, '/client/dist');
 
 module.exports = {
   mode: 'development',
-  entry: `${SRC_DIR}/index.jsx`,
+  entry: SRC_DIR,
   output: {
     filename: 'bundle.js',
     path: DIST_DIR
