@@ -17,12 +17,18 @@ class MediaPlayerWithQueue extends Component {
           <div>
             <ClearQueue />
           </div>
-          <ul id="tracks-in-queue">
-            {this.state.queuedTracks.map((track, index) => (
-              <QueuedTrack />
-            ))}
-            {/* map over queuedTracks here */}
-          </ul>
+          <div id="info-list-container">
+            <a href="">
+              <img src="" alt="" />
+              {/* large album image - toggled from hidden/visible by button in media player (need to figure out how to animate it) */}
+            </a>
+            <ul id="tracks-in-queue-list">
+              {this.state.queuedTracks.map((track, index) => (
+                <QueuedTrack />
+              ))}
+              {/* map over queuedTracks here */}
+            </ul>
+          </div>
         </div>
         <div>{/* port over all media player jsx here? */}</div>
       </section>

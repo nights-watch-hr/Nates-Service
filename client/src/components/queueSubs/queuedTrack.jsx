@@ -1,4 +1,5 @@
 import React from 'react';
+import BuyButton from '../mediaPlayerSubs/playerButtonsSubs/buyButton';
 
 const QueuedTrack = props => {
   return (
@@ -25,7 +26,13 @@ const QueuedTrack = props => {
         <span>Label</span>
         <span>Release Date</span>
       </div>
-      <div id="track-button container">placeholder</div>
+      <div id="track-button container">
+        <BuyButton />
+        <a href="">
+          <img src="" alt="" />
+          {/* remove song X - beatport uses an svg here, but it may not be necessary*/}
+        </a>
+      </div>
     </li>
   );
 };
