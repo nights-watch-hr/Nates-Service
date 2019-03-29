@@ -1,6 +1,6 @@
 import React from 'react';
 
-const queueButton = props => {
+const queueExpand = props => {
   return (
     <div id="queue-button-parent">
       <a href="">
@@ -11,4 +11,4 @@ const queueButton = props => {
   );
 };
 
-export default queueButton;
+export default queueExpand;

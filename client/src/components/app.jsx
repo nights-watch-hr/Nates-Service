@@ -10,7 +10,12 @@ class App extends Component {
   }
 
   render() {
-    return <div>Hello from React</div>;
+    return (
+      <div>
+        <div id="media-player">Initial</div>
+        <div id="pop-up-media-player">Conditional</div>
+      </div>
+    );
   }
 }
 
