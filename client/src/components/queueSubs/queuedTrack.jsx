@@ -1,5 +1,5 @@
 import React from 'react';
-import BuyButton from '../mediaPlayerSubs/playerButtonsSubs/buyButton';
+import BuyButton from '../buyButton';
 
 const QueuedTrack = props => {
   return (
