@@ -17,11 +17,11 @@ class buyButton extends Component {
           </button>
           <button id="launch-menu">
             <div id="launch-menu-icon">
-              <img src="" alt="" />
+              <img src="" />
               {/* beatport uses an svg here for animation */}
             </div>
             <div id="loading-menu-icon">
-              <img src="" alt="" />
+              <img src="" />
               {/* beatport uses an svg here for animation */}
             </div>
           </button>

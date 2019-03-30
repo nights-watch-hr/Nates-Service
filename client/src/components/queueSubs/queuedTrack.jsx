@@ -1,35 +1,36 @@
 import React from 'react';
-import BuyButton from '../buyButton';
+import BuyButton from '../mediaPlayerSubs/buyButton';
 
 const QueuedTrack = props => {
+  const { track } = props;
   return (
     <li>
       <div id="track-artwork">
-        <img src="" alt="" />
+        <img src={track.albumArt} />
       </div>
       <div id="track-artist">
         <span>
-          <a href={`localhost:3737?id=${track.id}`}>Track Title</a>
-          <span>Track Version</span>
+          <a href={`localhost:3737?id=${track.id}`}>{track.title}</a>
+          <span>{track.version}</span>
         </span>
-        <span>Track Artist</span>
+        <span>{track.artist}</span>
       </div>
       <div id="track-genre">
-        <span>Track Genre</span>
-        <span>Track Lengthh</span>
+        <span>{track.genre}</span>
+        <span>{track.length}</span>
       </div>
       <div id="track-key">
-        <span>Track Key</span>
-        <span>Track BPM</span>
+        <span>{track.key}</span>
+        <span>{track.bpm}</span>
       </div>
       <div id="track-label">
-        <span>Label</span>
-        <span>Release Date</span>
+        <span>{track.label}</span>
+        <span>{track.released}</span>
       </div>
       <div id="track-button container">
         <BuyButton />
         <a href="">
-          <img src="" alt="" />
+          <img src="" />
           {/* remove song X - beatport uses an svg here, but it may not be necessary*/}
         </a>
       </div>

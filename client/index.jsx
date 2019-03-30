@@ -1,5 +1,5 @@
 import React from 'react';
 import { render } from 'react-dom';
-import App from './src/components/app';
+import MediaPlayer from './src/components/mediaPlayer';
 
-render(<App />, document.getElementById('app'));
+render(<MediaPlayer />, document.getElementById('app'));

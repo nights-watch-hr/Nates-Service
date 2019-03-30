@@ -6,7 +6,7 @@ class MediaPlayerWithQueue extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      queuedTracks: []
+      artworkExpanded: false
     };
   }
 
@@ -18,12 +18,12 @@ class MediaPlayerWithQueue extends Component {
         </div>
         <div id="info-list-container">
           <a href="">
-            <img src="" alt="" />
+            <img src="" />
             {/* large album image - toggled from hidden/visible by button in media player (need to figure out how to animate it) */}
           </a>
           <ul id="tracks-in-queue-list">
-            {this.state.queuedTracks.map((track, index) => (
-              <QueuedTrack />
+            {this.props.queuedTracks.map((track, index) => (
+              <QueuedTrack key={index} track={track} />
             ))}
             {/* map over queuedTracks here */}
           </ul>

@@ -15,7 +15,7 @@ class PlayerButtons extends Component {
   render() {
     return (
       <div id="player-buttons-container">
-        <BuyButton price={this.props.track.price} />
+        <BuyButton price={this.props.price} />
         <KeyboardShortcuts />
         <PlayerControls />
         <QueueExpand />

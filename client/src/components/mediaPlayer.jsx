@@ -28,20 +28,43 @@ class MediaPlayer extends Component {
         mp3:
           'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/mp3s/04+Riviera.m4a'
       },
-      songsInQueue: false,
-      queueOpen: false
+      queuedTracks: [
+        {
+          id: 1,
+          title: 'Riviera',
+          version: 'Original Mix',
+          artist: 'Kartell',
+          album: 'Riviera',
+          genre: 'Indie Dance / Nu Disco',
+          label: 'Roche Musique',
+          released: '2012-05-21',
+          key: 'A min',
+          bpm: 122,
+          length: 327,
+          price: 1.49,
+          albumArt:
+            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Album+Art/Romance_EP-Darius.jpg',
+          waveform:
+            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/SoundWaves/Riviera-Kartell.svg',
+          mp3:
+            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/mp3s/04+Riviera.m4a'
+        }
+      ],
+      queueOpen: true
     };
   }
 
   render() {
     return (
       <div>
-        {this.state.songsInQueue && this.state.queueOpen && <PopUpQueue />}
+        {this.state.queuedTracks.length && this.state.queueOpen && (
+          <PopUpQueue queuedTracks={this.state.queuedTracks} />
+        )}
         {this.state.currentTrack && (
           <section id="player-container">
             <TrackInfo track={this.state.currentTrack} />
-            <Waveform waveform={this.state.waveform} />
-            <PlayerButtons />
+            <Waveform track={this.state.currentTrack} />
+            <PlayerButtons price={this.state.currentTrack.price} />
           </section>
         )}
       </div>

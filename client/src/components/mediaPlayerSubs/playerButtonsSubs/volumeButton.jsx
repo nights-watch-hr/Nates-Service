@@ -4,9 +4,9 @@ const volumeButton = props => {
   return (
     <div id="volume-button-parent">
       <a href="">
-        <img src="" alt="" />
+        <img src="" />
         {/* volume on - beatport uses an svg here, but it may not be necessary */}
-        <img src="" alt="" />
+        <img src="" />
         {/* volume off - beatport uses an svg here, but it may not be necessary*/}
       </a>
       <div id="volume-drop">

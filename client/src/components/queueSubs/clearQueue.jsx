@@ -5,7 +5,7 @@ const ClearQueue = props => {
     <div id="clear-queue-controls">
       <a href="">Clear Queue</a>
       <div id="clear-queue-button">
-        <img src="" alt="" />
+        <img src="" />
         {/* circle with carat - beatport uses an svg here, but it may not be necessary */}
       </div>
     </div>

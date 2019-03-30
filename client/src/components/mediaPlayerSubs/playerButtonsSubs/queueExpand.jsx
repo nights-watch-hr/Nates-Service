@@ -4,7 +4,7 @@ const queueExpand = props => {
   return (
     <div id="queue-button-parent">
       <a href="">
-        <img src="" alt="" />
+        <img src="" />
         {/* hamburger style icon - beatport uses an svg here, but it may not be necessary */}
       </a>
     </div>
