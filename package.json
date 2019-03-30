@@ -18,9 +18,12 @@
     "express": "^4.16.4",
     "mongoose": "^5.4.19",
     "morgan": "^1.9.1",
+    "node-sass": "^4.11.0",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
-    "sequelize": "^5.1.1"
+    "sass-loader": "^7.1.0",
+    "sequelize": "^5.1.1",
+    "url-loader": "^1.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",

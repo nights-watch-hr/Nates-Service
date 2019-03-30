@@ -4,7 +4,7 @@ class buyButton extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentTrack: null
+      inCart: false
     };
   }
 
@@ -13,7 +13,7 @@ class buyButton extends Component {
       <div id="buy-button-container">
         <div id="buy-button">
           <button id="add-to-cart">
-            <span>{this.state.props.currentTrack.price}</span>
+            <span>{this.props.price}</span>
           </button>
           <button id="launch-menu">
             <div id="launch-menu-icon">

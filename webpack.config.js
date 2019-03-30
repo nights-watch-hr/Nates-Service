@@ -21,7 +21,7 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/,
+        test: /\.s?css$/,
         loader: combinedLoaders([
           {
             loader: 'style-loader'
@@ -32,8 +32,15 @@ module.exports = {
               modules: true,
               localIdentName: '[name]__[loader]__[hash:base64:5]'
             }
+          },
+          {
+            loader: 'sass-loader'
           }
         ])
+      },
+      {
+        test: /\.(jpe?g|png|gif|woff|woff2|eot|ttf|svg|otf)(\?[a-z0-9=.]+)?$/,
+        loader: 'url-loader?limit=100000'
       }
     ]
   },

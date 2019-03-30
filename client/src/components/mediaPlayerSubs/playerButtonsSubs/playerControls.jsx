@@ -9,11 +9,7 @@ const playerControls = props => {
       </a>
       <a href="">
         <img src="" alt="" />
-        {/* play button - beatport uses an svg here, but it may not be necessary */}
-      </a>
-      <a href="">
-        <img src="" alt="" />
-        {/* pause button - beatport uses an svg here, but it may not be necessary */}
+        {/* play/pause button - beatport uses an svg here, but it may not be necessary */}
       </a>
       <a href="">
         <img src="" alt="" />
