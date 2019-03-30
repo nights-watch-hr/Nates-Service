@@ -1,0 +1,40 @@
+.trackInfoDiv {
+  width: 28vw;
+  display: flex;
+}
+
+.albumArt {
+  margin: 1px 0;
+  margin-left: 0.5vw;
+  height: 65px;
+}
+
+.songInfo {
+  width: 20vw;
+  padding: 1.5vh 0;
+  display: flex;
+  flex: 0 1 300px;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: center;
+  a {
+    text-decoration: none;
+  }
+  span {
+    vertical-align: baseline;
+    font-size: 15px;
+    color: #fff;
+  }
+}
+
+.title {
+  margin: 0 7px;
+  margin-bottom: 7px;
+  span {
+    margin: 0 3px;
+  }
+}
+
+.artist {
+  margin: 0 10px;
+}

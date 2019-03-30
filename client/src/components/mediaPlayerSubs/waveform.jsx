@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import style from '../../../styles/waveform';
 
 class Waveform extends Component {
   constructor(props) {
@@ -10,18 +11,23 @@ class Waveform extends Component {
 
   render() {
     return (
-      <div id="waveform-container">
-        <div id="bpm-key-length-container">
+      <div className={style.waveformDiv}>
+        <div className={style.info}>
           <span>{this.props.track.bpm}</span>
           <span>{this.props.track.key}</span>
           <span>{this.props.track.length}</span>
         </div>
-        <div id="clickzone">
+        <div className={style.clickZone}>
           {/* should scale with the size of the svg and stack on top of it */}
         </div>
         {/* do we need this canvas? <canvas id="waveform-svg" width="1050" height="90" /> */}
-        <svg viewBox="0 0 1050 170">
-          <image width="1050" height="170" href={this.props.track.waveform} />
+        <svg
+          height="200"
+          width="42vw"
+          viewBox="0 50 1050 200"
+          preserveAspectRatio="none"
+        >
+          <image href={this.props.track.waveform} />
         </svg>
       </div>
     );

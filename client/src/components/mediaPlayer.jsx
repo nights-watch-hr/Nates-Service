@@ -3,6 +3,7 @@ import TrackInfo from './mediaPlayerSubs/currentTrackInfo';
 import Waveform from './mediaPlayerSubs/waveform';
 import PlayerButtons from './mediaPlayerSubs/playerButtons';
 import PopUpQueue from './popUpQueue';
+import style from '../../styles/mediaPlayer';
 
 class MediaPlayer extends Component {
   constructor(props) {
@@ -50,7 +51,7 @@ class MediaPlayer extends Component {
             'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/mp3s/04+Riviera.m4a'
         }
       ],
-      queueOpen: true
+      queueOpen: false
     };
   }
 
@@ -61,7 +62,7 @@ class MediaPlayer extends Component {
           <PopUpQueue queuedTracks={this.state.queuedTracks} />
         )}
         {this.state.currentTrack && (
-          <section id="player-container">
+          <section className={style.fixed}>
             <TrackInfo track={this.state.currentTrack} />
             <Waveform track={this.state.currentTrack} />
             <PlayerButtons price={this.state.currentTrack.price} />
