@@ -13,9 +13,9 @@ class Waveform extends Component {
     return (
       <div className={style.waveformDiv}>
         <div className={style.info}>
-          <span>{this.props.track.bpm}</span>
-          <span>{this.props.track.key}</span>
-          <span>{this.props.track.length}</span>
+          <span>{this.props.track.bpm} BPM /</span>
+          <span> {this.props.track.key} /</span>
+          <span> {this.props.track.length}</span>
         </div>
         <div className={style.clickZone}>
           {/* should scale with the size of the svg and stack on top of it */}
@@ -29,6 +29,7 @@ class Waveform extends Component {
         >
           <image href={this.props.track.waveform} />
         </svg>
+        <div className={style.zoomButton}>_</div>
       </div>
     );
   }

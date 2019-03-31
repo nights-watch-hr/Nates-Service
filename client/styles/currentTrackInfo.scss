@@ -11,7 +11,6 @@
 
 .songInfo {
   width: 20vw;
-  padding: 1.5vh 0;
   display: flex;
   flex: 0 1 300px;
   flex-wrap: nowrap;
@@ -22,19 +21,29 @@
   }
   span {
     vertical-align: baseline;
-    font-size: 15px;
+    font-size: 13px;
     color: #fff;
   }
 }
 
 .title {
-  margin: 0 7px;
-  margin-bottom: 7px;
+  margin: 0 13px;
+  margin-top: 5px;
+  margin-bottom: 8px;
+  font: 550 1.077em/1.25 SourceSans, sans-serif;
+  letter-spacing: 1px;
   span {
-    margin: 0 3px;
+    margin: 0 2px;
   }
 }
 
+.version {
+  font: 100 1.077em/1.25 SourceSans, sans-serif;
+  letter-spacing: 1px;
+}
+
 .artist {
-  margin: 0 10px;
+  margin: 0 15px;
+  font: 550 1.077em/1.25 SourceSans, sans-serif;
+  letter-spacing: 1px;
 }

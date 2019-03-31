@@ -16,7 +16,7 @@ const TrackInfo = props => {
         <span className={style.title}>
           <a href={`localhost:3737?id=${props.track.id}`}>
             <span>{props.track.title}</span>
-            <span>{props.track.version}</span>
+            <span className={style.version}>{props.track.version}</span>
           </a>
         </span>
         <span className={style.artist}>{props.track.artist}</span>

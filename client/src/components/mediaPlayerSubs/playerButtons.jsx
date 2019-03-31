@@ -3,6 +3,7 @@ import BuyButton from './buyButton';
 import KeyboardShortcuts from './playerButtonsSubs/keyboardShortcuts';
 import PlayerControls from './playerButtonsSubs/playerControls';
 import QueueExpand from './playerButtonsSubs/queueExpand';
+import style from '../../../styles/playerButtons';
 
 class PlayerButtons extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class PlayerButtons extends Component {
 
   render() {
     return (
-      <div id="player-buttons-container">
+      <div className={style.playerButtons}>
         <BuyButton price={this.props.price} />
         <KeyboardShortcuts />
         <PlayerControls />
