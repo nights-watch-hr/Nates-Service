@@ -22,9 +22,9 @@ class Waveform extends Component {
         </div>
         {/* do we need this canvas? <canvas id="waveform-svg" width="1050" height="90" /> */}
         <svg
-          height="200"
+          height="130"
           width="42vw"
-          viewBox="0 50 1050 200"
+          viewBox="0 37 1050 200"
           preserveAspectRatio="none"
         >
           <image href={this.props.track.waveform} />

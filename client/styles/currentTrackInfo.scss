@@ -1,5 +1,5 @@
 .trackInfoDiv {
-  width: 28vw;
+  width: 33vw;
   display: flex;
 }
 
@@ -10,9 +10,8 @@
 }
 
 .songInfo {
-  width: 20vw;
   display: flex;
-  flex: 0 1 300px;
+  flex: 0 1 33vw;
   flex-wrap: nowrap;
   flex-direction: column;
   justify-content: center;
@@ -23,6 +22,7 @@
     vertical-align: baseline;
     font-size: 13px;
     color: #fff;
+    white-space: nowrap;
   }
 }
 

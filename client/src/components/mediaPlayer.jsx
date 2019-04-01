@@ -51,19 +51,24 @@ class MediaPlayer extends Component {
             'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/mp3s/04+Riviera.m4a'
         }
       ],
-      queueOpen: false
+      queueOpen: false,
+      artworkEnlarged: false
     };
   }
 
   render() {
     return (
       <div>
-        {this.state.queuedTracks.length && this.state.queueOpen && (
+        {this.state.queueOpen && (
           <PopUpQueue queuedTracks={this.state.queuedTracks} />
         )}
         {this.state.currentTrack && (
           <section className={style.fixed}>
-            <TrackInfo track={this.state.currentTrack} />
+            <TrackInfo
+              track={this.state.currentTrack}
+              queueOpen={this.state.queueOpen}
+              artworkEnlarged={this.state.artworkEnlarged}
+            />
             <Waveform track={this.state.currentTrack} />
             <PlayerButtons price={this.state.currentTrack.price} />
           </section>

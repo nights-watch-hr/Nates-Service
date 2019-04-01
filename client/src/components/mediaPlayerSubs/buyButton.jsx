@@ -1,29 +1,37 @@
 import React, { Component } from 'react';
+import style from '../../../styles/buyButton';
 
 class buyButton extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      inCart: false
+      inCart: false,
+      loading: false
     };
   }
 
   render() {
     return (
-      <div id="buy-button-container">
+      <div className={style.buyButtonContainer}>
         <div id="buy-button">
-          <button id="add-to-cart">
-            <span>{this.props.price}</span>
+          <button className={style.buyButton}>
+            <span>${this.props.price}</span>
           </button>
-          <button id="launch-menu">
-            <div id="launch-menu-icon">
-              <img src="" />
-              {/* beatport uses an svg here for animation */}
-            </div>
-            <div id="loading-menu-icon">
-              <img src="" />
-              {/* beatport uses an svg here for animation */}
-            </div>
+          <button className={style.launchMenu}>
+            {this.state.loading && (
+              <div id="loading-menu-icon">
+                <img src="" />
+                {/* beatport uses an svg here for animation */}
+              </div>
+            )}
+            {!this.state.loading && (
+              <div id="launch-menu-icon">
+                <img src="" />
+                {/* <svg>
+                  <image src="client/images/down-arrow.svg" />
+                </svg> */}
+              </div>
+            )}
           </button>
         </div>
       </div>
