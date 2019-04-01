@@ -1,19 +1,20 @@
 import React from 'react';
+import PreviousSongIcon from '../../../../icons/previousSongIcon';
+import NextSongIcon from '../../../../icons/NextSongIcon';
+import PlaySongIcon from '../../../../icons/PlaySongIcon';
+import style from '../../../../styles/playerControls';
 
 const playerControls = props => {
   return (
-    <div id="player-controls">
+    <div className={style.playerControlsContainer}>
       <a href="">
-        <img src="" />
-        {/* prev song - beatport uses an svg here, but it may not be necessary */}
+        <PreviousSongIcon />
       </a>
       <a href="">
-        <img src="" />
-        {/* play/pause button - beatport uses an svg here, but it may not be necessary */}
+        <PlaySongIcon />
       </a>
       <a href="">
-        <img src="" />
-        {/* next button - beatport uses an svg here, but it may not be necessary */}
+        <NextSongIcon />
       </a>
     </div>
   );

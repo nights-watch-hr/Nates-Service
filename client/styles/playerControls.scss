@@ -1,0 +1,16 @@
+.playerControlsContainer {
+  width: 9vw;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 130px;
+  padding-left: 7px;
+  box-sizing: content-box;
+  svg {
+    fill: #fff;
+    vertical-align: middle;
+  }
+  a {
+    margin: 0 10px;
+  }
+}

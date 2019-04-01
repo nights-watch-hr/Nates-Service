@@ -1,9 +1,11 @@
 .volumeControlsContainer {
   width: 5vw;
   display: flex;
-  flex: 1;
   justify-content: center;
   align-items: center;
+  min-width: 50px;
+  padding-top: 2px;
+  box-sizing: content-box;
   svg {
     fill: #fff;
     vertical-align: middle;

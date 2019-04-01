@@ -1,7 +1,8 @@
 .buyButtonContainer {
   width: 5vw;
   display: flex;
-  flex: 1;
+  flex-wrap: nowrap;
+  min-width: 83px;
   justify-content: flex-start;
   align-items: center;
 }
@@ -20,7 +21,7 @@
   font-size: 12px;
   font-weight: 700;
   line-height: 12px;
-  letter-spacing: 1.1px;
+  letter-spacing: 1.03px;
   vertical-align: middle;
 }
 

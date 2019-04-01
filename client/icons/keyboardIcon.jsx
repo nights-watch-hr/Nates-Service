@@ -4,8 +4,8 @@ const KeyboardIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
-    height="25"
-    width="25"
+    height="23"
+    width="23"
     viewBox="0 -96 512 512"
     preserveAspectRatio="none"
   >
