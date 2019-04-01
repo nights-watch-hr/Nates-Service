@@ -1,14 +1,14 @@
 import React from 'react';
-
-const keyboardShortcuts = props => {
+import KeyboardIcon from '../../../../icons/keyboardIcon';
+import style from '../../../../styles/keyboardShortcuts';
+const KeyboardShortcuts = props => {
   return (
-    <div id="keyboard-shortcuts-parent">
-      <a href="placeholder for keyboard shortcuts link">
-        <img src="" />
-        {/* keyboard img - beatport uses an svg here, but there is no need to */}
+    <div className={style.keyboardShortcutContainer}>
+      <a id="placeholder for Keyboard Shortcuts Modal" href="">
+        <KeyboardIcon />
       </a>
     </div>
   );
 };
 
-export default keyboardShortcuts;
+export default KeyboardShortcuts;

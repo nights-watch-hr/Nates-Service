@@ -1,0 +1,43 @@
+.volumeControlsContainer {
+  width: 5vw;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  svg {
+    fill: #fff;
+    vertical-align: middle;
+  }
+  a {
+    cursor: pointer;
+  }
+}
+
+.volumeDrop {
+  box-sizing: border-box;
+  left: -webkit-calc(50% - 18px);
+  left: -moz-calc(50% - 18px);
+  left: calc(50% - 18px);
+  display: none;
+  opacity: 0;
+  border-radius: 3px;
+  position: absolute;
+  bottom: -15px;
+  margin: 0;
+  padding: 15px 15px 50px 12px;
+  background: #000;
+  border: 1px solid #333;
+  text-align: center;
+  transition: opacity 0.2s;
+  z-index: 9;
+  input {
+    writing-mode: bt-lr;
+    -webkit-appearance: slider-vertical;
+    position: relative;
+    width: 8px;
+    height: 150px;
+    padding: 0;
+    margin: 0;
+    display: block;
+  }
+}

@@ -1,0 +1,11 @@
+.keyboardShortcutContainer {
+  width: 5vw;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  svg {
+    fill: #fff;
+    vertical-align: middle;
+  }
+}

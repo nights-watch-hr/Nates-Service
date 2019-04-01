@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TrackInfo from './mediaPlayerSubs/currentTrackInfo';
-import Waveform from './mediaPlayerSubs/waveform';
+import WaveformContainer from './mediaPlayerSubs/waveformContainer';
 import PlayerButtons from './mediaPlayerSubs/playerButtons';
 import PopUpQueue from './popUpQueue';
 import style from '../../styles/mediaPlayer';
@@ -69,7 +69,7 @@ class MediaPlayer extends Component {
               queueOpen={this.state.queueOpen}
               artworkEnlarged={this.state.artworkEnlarged}
             />
-            <Waveform track={this.state.currentTrack} />
+            <WaveformContainer track={this.state.currentTrack} />
             <PlayerButtons price={this.state.currentTrack.price} />
           </section>
         )}
