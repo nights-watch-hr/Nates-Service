@@ -2,4 +2,8 @@
   width: 30vw;
   display: flex;
   padding: 0 2vw;
+  button {
+    outline: none;
+    cursor: pointer;
+  }
 }

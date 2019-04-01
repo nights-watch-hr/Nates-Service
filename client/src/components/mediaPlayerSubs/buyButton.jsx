@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import DownArrowIcon from '../../../icons/downArrowIcon';
 import style from '../../../styles/buyButton';
 
 class buyButton extends Component {
@@ -26,10 +27,7 @@ class buyButton extends Component {
             )}
             {!this.state.loading && (
               <div id="launch-menu-icon">
-                <img src="" />
-                {/* <svg>
-                  <image src="client/images/down-arrow.svg" />
-                </svg> */}
+                <DownArrowIcon />
               </div>
             )}
           </button>
