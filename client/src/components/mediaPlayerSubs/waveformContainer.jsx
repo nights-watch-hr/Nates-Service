@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import Waveform from '../mediaPlayerSubs/waveform';
+import PlusSignIcon from '../../../icons/plusSignIcon';
+import MinusSignIcon from '../../../icons/minusSignIcon';
 import style from '../../../styles/waveform';
 
 class WaveformContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      playState: 'none' // this state applies to when the track is not started or has finished playing. Other values could be paused or playing
+      playState: 'none', // this state applies to when the track is not started or has finished playing. Other values could be paused or playing
+      zoomed: false
     };
   }
 
@@ -23,7 +26,10 @@ class WaveformContainer extends Component {
         </div>
         {/* do we need this canvas? <canvas id="waveform-svg" width="1050" height="90" /> */}
         <Waveform svg={this.props.track.waveform} />
-        <div className={style.zoomButton}>_</div>
+        <div className={style.zoomButton}>
+          {this.state.zoomed && <MinusSignIcon />}
+          {!this.state.zoomed && <PlusSignIcon />}
+        </div>
       </div>
     );
   }
