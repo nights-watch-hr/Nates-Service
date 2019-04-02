@@ -1,4 +1,4 @@
-.queueContainer {
+.queueContainerNoArtwork {
   height: 250px;
   width: 100vw;
   display: block;
@@ -13,4 +13,10 @@
     margin: 0;
     padding-left: 0.5vw;
   }
+}
+
+.queueContainerWithArtwork {
+  @extend .queueContainerNoArtwork;
+  width: calc(100vw - 250px);
+  right: 0;
 }

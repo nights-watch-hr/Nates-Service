@@ -141,6 +141,7 @@ class MediaPlayer extends Component {
       <div>
         {this.state.queueOpen && (
           <PopUpQueue
+            albumArt={this.state.currentTrack.albumArt}
             queuedTracks={this.state.queuedTracks}
             artworkEnlarged={this.state.artworkEnlarged}
           />
