@@ -49,9 +49,73 @@ class MediaPlayer extends Component {
             'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/SoundWaves/Riviera-Kartell.svg',
           mp3:
             'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/mp3s/04+Riviera.m4a'
+        },
+        {
+          id: 2,
+          title: 'Last Call',
+          version: 'Original Mix',
+          artist: 'Kartell',
+          album: 'Sapphire',
+          genre: 'Indie Dance / Nu Disco',
+          label: 'Roche Musique',
+          released: '2014-01-06',
+          key: 'D min',
+          bpm: 130,
+          length: 176,
+          price: 1.49,
+          albumArt:
+            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Album+Art/Sapphire-Kartell.jpg'
+        },
+        {
+          id: 3,
+          title: 'Espoir',
+          version: 'Original Mix',
+          artist: 'Darius',
+          album: 'Romance EP',
+          genre: 'Indie Dance / Nu Disco',
+          label: 'Roche Musique',
+          released: '2014-02-24',
+          key: 'E♭ min',
+          bpm: 143,
+          length: 242,
+          price: 1.49,
+          albumArt:
+            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Album+Art/Romance_EP-Darius.jpg'
+        },
+        {
+          id: 4,
+          title: 'Omeo',
+          version: 'Original Mix',
+          artist: 'Darius',
+          album: 'Romance EP',
+          genre: 'Indie Dance / Nu Disco',
+          label: 'Roche Musique',
+          released: '2014-02-24',
+          key: 'D♭ maj',
+          bpm: 112,
+          length: 210,
+          price: 1.49,
+          albumArt:
+            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Album+Art/Romance_EP-Darius.jpg'
+        },
+        {
+          id: 5,
+          title: 'Vanyll',
+          version: 'Original Mix',
+          artist: 'Darius',
+          album: 'Romance EP',
+          genre: 'Indie Dance / Nu Disco',
+          label: 'Roche Musique',
+          released: '2014-02-24',
+          key: 'A min',
+          bpm: 110,
+          length: 240,
+          price: 1.49,
+          albumArt:
+            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Album+Art/Romance_EP-Darius.jpg'
         }
       ],
-      queueOpen: false,
+      queueOpen: true,
       artworkEnlarged: false
     };
   }

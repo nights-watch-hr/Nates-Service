@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ClearQueue from './queueSubs/clearQueue';
 import QueuedTrack from './queueSubs/queuedTrack';
+import style from '../../styles/popUpQueue';
 
 class MediaPlayerWithQueue extends Component {
   constructor(props) {
@@ -12,20 +13,21 @@ class MediaPlayerWithQueue extends Component {
 
   render() {
     return (
-      <div id="pop-up-queue-container">
+      <div>
         <div>
           <ClearQueue />
         </div>
-        <div id="info-list-container">
-          <a href="">
-            <img src="" />
-            {/* large album image - toggled from hidden/visible by button in media player (need to figure out how to animate it) */}
-          </a>
+        <div className={style.queueContainer}>
+          {this.state.artworkExpanded && (
+            <a href="">
+              <img src="" />
+              {/* large album image - toggled from hidden/visible by button in media player (need to figure out how to animate it) */}
+            </a>
+          )}
           <ul id="tracks-in-queue-list">
             {this.props.queuedTracks.map((track, index) => (
               <QueuedTrack key={index} track={track} />
             ))}
-            {/* map over queuedTracks here */}
           </ul>
         </div>
       </div>

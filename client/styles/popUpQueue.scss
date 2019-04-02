@@ -1,0 +1,16 @@
+.queueContainer {
+  height: 245px;
+  width: 100vw;
+  display: block;
+  overflow: auto;
+  padding-top: 1px;
+  color: #fff;
+  background-color: #191919;
+  border-bottom: 1px solid #000;
+  position: fixed;
+  bottom: 67px;
+  ul {
+    margin: 0;
+    padding-left: 0.5vw;
+  }
+}
