@@ -21,7 +21,10 @@ class PlayerButtons extends Component {
         <KeyboardShortcuts />
         <VolumeControls />
         <PlayerControls />
-        <QueueExpand />
+        <QueueExpand
+          queueOpen={this.props.queueOpen}
+          expandQueue={this.props.expandQueue}
+        />
       </div>
     );
   }

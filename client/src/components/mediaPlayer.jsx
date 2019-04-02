@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TrackInfo from './mediaPlayerSubs/currentTrackInfo';
+import CurrentTrackInfo from './mediaPlayerSubs/currentTrackInfo';
 import WaveformContainer from './mediaPlayerSubs/waveformContainer';
 import PlayerButtons from './mediaPlayerSubs/playerButtons';
 import PopUpQueue from './popUpQueue';
@@ -118,23 +118,47 @@ class MediaPlayer extends Component {
       queueOpen: true,
       artworkEnlarged: false
     };
+    this.expandQueue = this.expandQueue.bind(this);
+    this.expandArtwork = this.expandArtwork.bind(this);
+  }
+
+  expandQueue(e) {
+    e.preventDefault();
+    this.state.queueOpen
+      ? this.setState({ queueOpen: false })
+      : this.setState({ queueOpen: true });
+  }
+
+  expandArtwork(e) {
+    e.preventDefault();
+    this.state.artworkEnlarged
+      ? this.setState({ artworkEnlarged: false })
+      : this.setState({ artworkEnlarged: true });
   }
 
   render() {
     return (
       <div>
         {this.state.queueOpen && (
-          <PopUpQueue queuedTracks={this.state.queuedTracks} />
+          <PopUpQueue
+            queuedTracks={this.state.queuedTracks}
+            artworkEnlarged={this.state.artworkEnlarged}
+          />
         )}
         {this.state.currentTrack && (
           <section className={style.fixed}>
-            <TrackInfo
+            <CurrentTrackInfo
               track={this.state.currentTrack}
               queueOpen={this.state.queueOpen}
               artworkEnlarged={this.state.artworkEnlarged}
+              expandArtwork={this.expandArtwork}
             />
             <WaveformContainer track={this.state.currentTrack} />
-            <PlayerButtons price={this.state.currentTrack.price} />
+            <PlayerButtons
+              price={this.state.currentTrack.price}
+              queueOpen={this.state.queueOpen}
+              expandQueue={this.expandQueue}
+            />
           </section>
         )}
       </div>

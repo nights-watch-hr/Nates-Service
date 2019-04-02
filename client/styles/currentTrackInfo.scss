@@ -3,6 +3,12 @@
   display: flex;
 }
 
+@media only screen and (max-width: 900px) {
+  .trackInfoDiv {
+    width: 17vw;
+  }
+}
+
 .albumArt {
   margin: 1px 0;
   margin-left: 0.5vw;
@@ -22,6 +28,12 @@
   svg {
     fill: #999999;
     transform: rotate(180deg);
+  }
+}
+
+.arrowDown {
+  svg {
+    fill: #999999;
   }
 }
 

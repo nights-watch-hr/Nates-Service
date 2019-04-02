@@ -4,6 +4,12 @@
   position: relative;
 }
 
+@media only screen and (max-width: 900px) {
+  .waveformDiv {
+    visibility: hidden;
+  }
+}
+
 .info {
   position: absolute;
   display: block;

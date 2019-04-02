@@ -5,14 +5,18 @@ import style from '../../../styles/currentTrackInfo';
 const TrackInfo = props => {
   return (
     <div className={style.trackInfoDiv}>
-      {!props.enlargedArtwork && (
+      {!props.artworkEnlarged && (
         <a href={`localhost:3737?id=${props.track.id}`}>
           <img className={style.albumArt} src={props.track.albumArt} />
         </a>
       )}
       {props.queueOpen && (
         <div className={style.artworkToggle}>
-          <a className={style.arrowUp} href="">
+          <a
+            className={props.artworkEnlarged ? style.arrowDown : style.arrowUp}
+            onClick={props.expandArtwork}
+            href=""
+          >
             <DownArrowInCircleIcon />
           </a>
         </div>
