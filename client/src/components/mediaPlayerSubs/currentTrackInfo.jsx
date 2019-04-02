@@ -1,4 +1,5 @@
 import React from 'react';
+import DownArrowInCircleIcon from '../../../icons/downArrowInCircleIcon';
 import style from '../../../styles/currentTrackInfo';
 
 const TrackInfo = props => {
@@ -10,13 +11,15 @@ const TrackInfo = props => {
         </a>
       )}
       {props.queueOpen && (
-        <div id="artwork-toggle">
-          {/* this will be hidden if there is no queue */}
-          <img src="" />
-          {/* beatport uses an svg here for animation */}
+        <div className={style.artworkToggle}>
+          <a className={style.arrowUp} href="">
+            <DownArrowInCircleIcon />
+          </a>
         </div>
       )}
-      <div className={style.songInfo}>
+      <div
+        className={props.queueOpen ? style.songInfoWithQueue : style.songInfo}
+      >
         <span className={style.title}>
           <a href={`localhost:3737?id=${props.track.id}`}>
             <span>{props.track.title}</span>

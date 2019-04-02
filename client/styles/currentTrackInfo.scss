@@ -1,5 +1,5 @@
 .trackInfoDiv {
-  width: 30vw;
+  width: 29vw;
   display: flex;
 }
 
@@ -9,12 +9,47 @@
   height: 65px;
 }
 
+.artworkToggle {
+  display: flex;
+  flex: 0 0 25px;
+  align-items: center;
+  justify-content: center;
+  padding-top: 7px;
+  padding-left: 5px;
+}
+
+.arrowUp {
+  svg {
+    fill: #999999;
+    transform: rotate(180deg);
+  }
+}
+
 .songInfo {
   display: flex;
-  flex: 0 3 30vw;
+  flex: 0 3 300px;
   flex-wrap: nowrap;
   flex-direction: column;
   justify-content: center;
+  padding-left: 15px;
+  a {
+    text-decoration: none;
+  }
+  span {
+    vertical-align: baseline;
+    font-size: 13px;
+    color: #fff;
+    white-space: nowrap;
+  }
+}
+
+.songInfoWithQueue {
+  display: flex;
+  flex: 0 3 26vw;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 5px;
   a {
     text-decoration: none;
   }
@@ -27,13 +62,12 @@
 }
 
 .title {
-  margin: 0 13px;
   margin-top: 5px;
   margin-bottom: 8px;
   font: 550 1.077em/1.25 SourceSans, sans-serif;
   letter-spacing: 1px;
   span {
-    margin: 0 2px;
+    margin-right: 3.7px;
   }
 }
 
@@ -43,7 +77,6 @@
 }
 
 .artist {
-  margin: 0 15px;
   font: 550 1.077em/1.25 SourceSans, sans-serif;
   letter-spacing: 1px;
 }
