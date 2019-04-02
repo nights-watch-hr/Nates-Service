@@ -2,11 +2,13 @@
   list-style: none;
   display: flex;
   height: 52px;
+  margin-bottom: 1px;
 }
 
 .albumArtwork {
   img {
     height: 52px;
+    width: 51.7px;
   }
 }
 
@@ -18,9 +20,9 @@
   justify-content: center;
   text-overflow: ellipsis;
   overflow: hidden;
+  padding-top: 10px;
+  font-size: 12px;
   span {
-    vertical-align: baseline;
-    font-size: 12px;
     white-space: nowrap;
   }
 }
@@ -41,7 +43,7 @@
 
 .artist {
   margin: 3px 11px;
-  font: 400 1em/1.25 SourceSans, sans-serif;
+  font: 400 1.07em/1.25 SourceSans, sans-serif;
   letter-spacing: 0.5px;
   color: #8c8c8c;
 }
@@ -53,12 +55,12 @@
   box-sizing: content-box;
   span {
     margin: 1.5px 0;
-    font: 100 0.77em/1.25 SourceSans, sans-serif;
+    font: 100 1em/1.25 SourceSans, sans-serif;
     letter-spacing: 0.5px;
   }
   .trackLength {
     color: #8c8c8c;
-    font-size: 0.81em;
+    font-size: 1.07em;
   }
 }
 
@@ -66,7 +68,7 @@
   @extend .genre;
   .bpm {
     color: #8c8c8c;
-    font-size: 0.81em;
+    font-size: 1.07em;
   }
 }
 
@@ -74,7 +76,7 @@
   @extend .djInfo;
   .releaseDate {
     color: #8c8c8c;
-    font-size: 0.81em;
+    font-size: 1.07em;
   }
 }
 
@@ -85,7 +87,7 @@
   justify-content: center;
   align-items: baseline;
   margin-left: 1vw;
-  padding: 13px 0;
+  padding-top: 17px;
 }
 
 .removeFromQueue {
@@ -95,6 +97,7 @@
   align-items: center;
   vertical-align: middle;
   justify-content: flex-start;
+  padding-top: 9px;
   a {
     svg {
       fill: #6c6c6c;
