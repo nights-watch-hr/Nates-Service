@@ -13,7 +13,7 @@ class volumeControls extends Component {
   render() {
     return (
       <div className={style.volumeControlsContainer}>
-        <a>
+        <a className={style.volumeIcon}>
           <VolumeIcon />
         </a>
         <div className={style.volumeDrop}>

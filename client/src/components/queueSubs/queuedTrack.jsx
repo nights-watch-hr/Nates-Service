@@ -32,7 +32,9 @@ const QueuedTrack = props => {
       </div>
       <div className={style.genre}>
         <span className={style.genreSpan}>{track.genre}</span>
-        <span className={style.trackLength}>{track.length}</span>
+        <span className={style.trackLength}>
+          {props.calculateLengthInMinutes(track.length)}
+        </span>
       </div>
       <div className={style.djInfo}>
         <span>{track.key}</span>

@@ -41,6 +41,7 @@ const MediaPlayerWithQueue = props => {
               currentTrackIndex={props.currentTrackIndex}
               removeFromQueue={props.removeFromQueue}
               applyNewCurrentTrack={props.applyNewCurrentTrack}
+              calculateLengthInMinutes={props.calculateLengthInMinutes}
             />
           ))}
         </ul>

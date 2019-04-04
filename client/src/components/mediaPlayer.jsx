@@ -118,6 +118,7 @@ class MediaPlayer extends Component {
     this.applyNewCurrentTrack = this.applyNewCurrentTrack.bind(this);
     this.removeFromQueue = this.removeFromQueue.bind(this);
     this.clearQueue = this.clearQueue.bind(this);
+    this.calculateLengthInMinutes = this.calculateLengthInMinutes.bind(this);
   }
 
   componentDidMount() {
@@ -188,6 +189,12 @@ class MediaPlayer extends Component {
     });
   }
 
+  calculateLengthInMinutes(songLength) {
+    let minutes = Math.floor(songLength / 60);
+    let seconds = songLength % 60;
+    return seconds < 10 ? `${minutes}:0${seconds}` : `${minutes}:${seconds}`;
+  }
+
   render() {
     if (this.state.currentTrack) {
       return (
@@ -213,6 +220,7 @@ class MediaPlayer extends Component {
                 applyNewCurrentTrack={this.applyNewCurrentTrack}
                 removeFromQueue={this.removeFromQueue}
                 clearQueue={this.clearQueue}
+                calculateLengthInMinutes={this.calculateLengthInMinutes}
               />
             )}
           </CSSTransitionGroup>
@@ -223,7 +231,10 @@ class MediaPlayer extends Component {
               artworkEnlarged={this.state.artworkEnlarged}
               expandArtwork={this.expandArtwork}
             />
-            <WaveformContainer track={this.state.currentTrack} />
+            <WaveformContainer
+              track={this.state.currentTrack}
+              calculateLengthInMinutes={this.calculateLengthInMinutes}
+            />
             <PlayerButtons
               price={this.state.currentTrack.price}
               queueOpen={this.state.queueOpen}
