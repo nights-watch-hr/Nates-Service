@@ -8,7 +8,7 @@ import style from '../../../../styles/playerControls';
 const playerControls = props => {
   return (
     <div className={style.playerControlsContainer}>
-      <a href="">
+      <a onClick={props.previousSong}>
         <PreviousSongIcon />
       </a>
       {(props.playState === null || props.playState === 'paused') && (
@@ -21,7 +21,7 @@ const playerControls = props => {
           <PauseSongIcon />
         </a>
       )}
-      <a href="">
+      <a onClick={props.nextSong}>
         <NextSongIcon />
       </a>
     </div>

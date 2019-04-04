@@ -130,6 +130,8 @@ class MediaPlayer extends Component {
     this.clearQueue = this.clearQueue.bind(this);
     this.playSong = this.playSong.bind(this);
     this.pauseSong = this.pauseSong.bind(this);
+    this.previousSong = this.previousSong.bind(this);
+    this.nextSong = this.nextSong.bind(this);
     this.spacePlay = this.spacePlay.bind(this);
   }
 
@@ -221,6 +223,31 @@ class MediaPlayer extends Component {
     this.setState({ playState: 'paused' });
   }
 
+  previousSong() {
+    if (this.state.currentTrackIndex !== 0) {
+      let previousTrackIndex = this.state.currentTrackIndex - 1;
+      let currentTrack = this.state.queuedTracks[previousTrackIndex];
+      this.setState(
+        { currentTrack, currentTrackIndex: previousTrackIndex },
+        () => {
+          this.currentTrack.load();
+          this.playSong();
+        }
+      );
+    }
+  }
+
+  nextSong() {
+    if (this.state.currentTrackIndex !== this.state.queuedTracks.length - 1) {
+      let nextTrackIndex = this.state.currentTrackIndex + 1;
+      let currentTrack = this.state.queuedTracks[nextTrackIndex];
+      this.setState({ currentTrack, currentTrackIndex: nextTrackIndex }, () => {
+        this.currentTrack.load();
+        this.playSong();
+      });
+    }
+  }
+
   spacePlay(e) {
     if (e.code === 'Space') {
       if (
@@ -288,6 +315,8 @@ class MediaPlayer extends Component {
               expandQueue={this.expandQueue}
               playSong={this.playSong}
               pauseSong={this.pauseSong}
+              previousSong={this.previousSong}
+              nextSong={this.nextSong}
             />
           </section>
         </div>

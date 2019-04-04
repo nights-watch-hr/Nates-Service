@@ -16,6 +16,8 @@ const PlayerButtons = props => {
         playState={props.playState}
         playSong={props.playSong}
         pauseSong={props.pauseSong}
+        previousSong={props.previousSong}
+        nextSong={props.nextSong}
       />
       <QueueExpand
         queueOpen={props.queueOpen}
