@@ -1,26 +1,53 @@
 import React from 'react';
+import { CSSTransitionGroup } from 'react-transition-group';
 import DownArrowInCircleIcon from '../../../icons/downArrowInCircleIcon';
 import style from '../../../styles/currentTrackInfo';
+import animation from '../../../styles/animation';
 
 const TrackInfo = props => {
   return (
     <div className={style.trackInfoDiv}>
-      {(!props.artworkEnlarged || !props.queueOpen) && (
-        <a href={`localhost:3737?id=${props.track.id}`}>
-          <img className={style.albumArt} src={props.track.albumArt} />
-        </a>
-      )}
-      {props.queueOpen && (
-        <div className={style.artworkToggle}>
-          <a
-            className={props.artworkEnlarged ? style.arrowDown : style.arrowUp}
-            onClick={props.expandArtwork}
-            href=""
-          >
-            <DownArrowInCircleIcon />
-          </a>
-        </div>
-      )}
+      <a key="artworkThumbnail" href={`localhost:3737?id=${props.track.id}`}>
+        <CSSTransitionGroup
+          transitionName={{
+            enter: animation.artworkEnter,
+            enterActive: animation.artworkEnterActive,
+            leave: animation.artworkLeave,
+            leaveActive: animation.artworkLeaveActive
+          }}
+          transitionEnterTimeout={300}
+          transitionLeaveTimeout={300}
+        >
+          {(!props.artworkEnlarged || !props.queueOpen) && (
+            <img className={style.albumArt} src={props.track.albumArt} />
+          )}
+        </CSSTransitionGroup>
+      </a>
+      <CSSTransitionGroup
+        transitionName={{
+          enter: animation.toggleEnter,
+          enterActive: animation.toggleEnterActive,
+          leave: animation.toggleLeave,
+          leaveActive: animation.toggleLeaveActive
+        }}
+        transitionEnterTimeout={300}
+        transitionLeaveTimeout={300}
+        className={style.transitionGroup}
+      >
+        {props.queueOpen && (
+          <div className={style.artworkToggle}>
+            <a
+              className={
+                props.artworkEnlarged ? style.arrowDown : style.arrowUp
+              }
+              onClick={props.expandArtwork}
+              href=""
+            >
+              <DownArrowInCircleIcon />
+            </a>
+          </div>
+        )}
+      </CSSTransitionGroup>
       <div
         className={props.queueOpen ? style.songInfoWithQueue : style.songInfo}
       >

@@ -118,7 +118,9 @@ class MediaPlayer extends Component {
         }
       ],
       queueOpen: false,
-      artworkEnlarged: true
+      queueOpenAnimation: null,
+      artworkEnlarged: true,
+      artworkEnlargedAnimation: null
     };
     this.expandQueue = this.expandQueue.bind(this);
     this.expandArtwork = this.expandArtwork.bind(this);
@@ -133,9 +135,17 @@ class MediaPlayer extends Component {
 
   expandArtwork(e) {
     e.preventDefault();
-    this.state.artworkEnlarged
-      ? this.setState({ artworkEnlarged: false })
-      : this.setState({ artworkEnlarged: true });
+    if (this.state.artworkEnlarged) {
+      this.setState({
+        artworkEnlarged: false,
+        artworkEnlargedAnimation: 'hideArt'
+      });
+    } else {
+      this.setState({
+        artworkEnlarged: true,
+        artworkEnlargedAnimation: 'showArt'
+      });
+    }
   }
 
   render() {
@@ -150,6 +160,7 @@ class MediaPlayer extends Component {
           }}
           transitionEnterTimeout={500}
           transitionLeaveTimeout={500}
+          className={style.transitionGroup}
         >
           {this.state.queueOpen && (
             <PopUpQueue
@@ -157,6 +168,7 @@ class MediaPlayer extends Component {
               albumArt={this.state.currentTrack.albumArt}
               queuedTracks={this.state.queuedTracks}
               artworkEnlarged={this.state.artworkEnlarged}
+              artworkEnlargedAnimation={this.state.artworkEnlargedAnimation}
             />
           )}
         </CSSTransitionGroup>

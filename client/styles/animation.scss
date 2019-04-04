@@ -1,14 +1,54 @@
 .queueEnter {
-  opacity: 0;
+  display: inline-block;
+  transform: translateY(-100%);
 }
 .queueEnterActive {
-  opacity: 1;
-  transition: opacity 500ms ease-in;
+  display: inline-block;
+  transform: translateY(0%);
+  transition: transform 500ms ease-in;
 }
 .queueLeave {
-  opacity: 1;
+  display: inline-block;
+  transform: translateY(0%);
 }
 .queueLeaveActive {
+  display: inline-block;
+  transform: translateY(-100%);
+  transition: transform 500ms ease-in;
+}
+.artworkEnter {
+  width: 0;
+  height: 65px;
+  object-fit: fill;
+}
+.artworkEnterActive {
+  width: 65px;
+  height: 65px;
+  object-fit: fill;
+  transition: width 200ms linear;
+}
+.artworkLeave {
+  width: 65px;
+  height: 65px;
+  object-fit: fill;
+}
+.artworkLeaveActive {
+  width: 0;
+  height: 65px;
+  object-fit: fill;
+  transition: width 200ms linear;
+}
+.toggleEnter {
   opacity: 0;
-  transition: opacity 500ms ease-in;
+}
+.toggleEnterActive {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+.toggleLeave {
+  opacity: 1;
+}
+.toggleLeaveActive {
+  opacity: 0;
+  transition: opacity 300ms ease-in;
 }

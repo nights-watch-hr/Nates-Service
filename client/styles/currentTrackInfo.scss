@@ -12,7 +12,8 @@
 .albumArt {
   margin: 1px 0;
   margin-left: 0.5vw;
-  height: 65px;
+  object-fit: fill;
+  width: 65px;
 }
 
 .artworkToggle {
@@ -91,4 +92,11 @@
 .artist {
   font: 550 1.077em/1.25 SourceSans, sans-serif;
   letter-spacing: 1px;
+}
+
+.transitionGroup {
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+  justify-content: center;
 }

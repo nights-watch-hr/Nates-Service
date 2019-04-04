@@ -5,21 +5,30 @@ import LargeArtwork from './queueSubs/largeArtwork';
 import style from '../../styles/popUpQueue';
 
 const MediaPlayerWithQueue = props => {
+  let conditionalArtworkStyling;
+
+  if (props.artworkEnlarged && !props.artworkEnlargedAnimation) {
+    conditionalArtworkStyling = style.queueContainerWithArtwork;
+  } else if (!props.artworkEnlarged && !props.artworkEnlargedAnimation) {
+    conditionalArtworkStyling = style.queueContainerNoArtwork;
+  } else if (props.artworkEnlargedAnimation === 'hideArt') {
+    conditionalArtworkStyling = style.hideArt;
+  } else if (props.artworkEnlargedAnimation === 'showArt') {
+    conditionalArtworkStyling = style.showArt;
+  }
+
   return (
     <div>
       <div>
         <ClearQueue />
       </div>
       <div>
-        {props.artworkEnlarged && <LargeArtwork albumArt={props.albumArt} />}
+        <LargeArtwork
+          albumArt={props.albumArt}
+          artworkEnlarged={props.artworkEnlarged}
+        />
       </div>
-      <div
-        className={
-          props.artworkEnlarged
-            ? style.queueContainerWithArtwork
-            : style.queueContainerNoArtwork
-        }
-      >
+      <div className={conditionalArtworkStyling}>
         <ul id="tracks-in-queue-list">
           {props.queuedTracks.map((track, index) => (
             <QueuedTrack key={index} track={track} />
