@@ -107,6 +107,7 @@ class MediaPlayer extends Component {
             'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/SoundWaves/Vanyll-Darius.svg'
         }
       ],
+      playState: null,
       queueOpen: false,
       queueOpenAnimation: null,
       artworkEnlarged: true,
@@ -114,11 +115,13 @@ class MediaPlayer extends Component {
     };
     this.expandQueue = this.expandQueue.bind(this);
     this.expandArtwork = this.expandArtwork.bind(this);
+    this.calculateLengthInMinutes = this.calculateLengthInMinutes.bind(this);
     this.applyFirstTrack = this.applyFirstTrack.bind(this);
     this.applyNewCurrentTrack = this.applyNewCurrentTrack.bind(this);
     this.removeFromQueue = this.removeFromQueue.bind(this);
     this.clearQueue = this.clearQueue.bind(this);
-    this.calculateLengthInMinutes = this.calculateLengthInMinutes.bind(this);
+    this.playSong = this.playSong.bind(this);
+    this.pauseSong = this.pauseSong.bind(this);
   }
 
   componentDidMount() {
@@ -146,6 +149,12 @@ class MediaPlayer extends Component {
       });
     }
     setTimeout(() => this.setState({ artworkEnlargedAnimation: null }), 200);
+  }
+
+  calculateLengthInMinutes(songLength) {
+    let minutes = Math.floor(songLength / 60);
+    let seconds = songLength % 60;
+    return seconds < 10 ? `${minutes}:0${seconds}` : `${minutes}:${seconds}`;
   }
 
   applyFirstTrack() {
@@ -189,10 +198,14 @@ class MediaPlayer extends Component {
     });
   }
 
-  calculateLengthInMinutes(songLength) {
-    let minutes = Math.floor(songLength / 60);
-    let seconds = songLength % 60;
-    return seconds < 10 ? `${minutes}:0${seconds}` : `${minutes}:${seconds}`;
+  playSong() {
+    this.currentTrack.play();
+    this.setState({ playState: 'playing' });
+  }
+
+  pauseSong() {
+    this.currentTrack.pause();
+    this.setState({ playState: 'paused' });
   }
 
   render() {
@@ -224,6 +237,13 @@ class MediaPlayer extends Component {
               />
             )}
           </CSSTransitionGroup>
+          <audio
+            ref={currentTrack => {
+              this.currentTrack = currentTrack;
+            }}
+          >
+            <source src={this.state.currentTrack.mp3} />
+          </audio>
           <section className={style.fixed}>
             <CurrentTrackInfo
               track={this.state.currentTrack}
@@ -238,7 +258,10 @@ class MediaPlayer extends Component {
             <PlayerButtons
               price={this.state.currentTrack.price}
               queueOpen={this.state.queueOpen}
+              playState={this.state.playState}
               expandQueue={this.expandQueue}
+              playSong={this.playSong}
+              pauseSong={this.pauseSong}
             />
           </section>
         </div>

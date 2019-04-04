@@ -8,7 +8,7 @@ class WaveformContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      playState: 'none', // this state applies to when the track is not started or has finished playing. Other values could be paused or playing
+      playState: null, // this state applies to when the track is not started or has finished playing. Other values could be paused or playing
       zoomed: false
     };
   }

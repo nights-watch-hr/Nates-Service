@@ -1,7 +1,7 @@
 import React from 'react';
 import BuyButton from '../queueSubs/buyButtonQueue';
 import RemoveFromQueueIcon from '../../../icons/removeFromQueueIcon';
-import PlaySongIcon from '../../../icons/PlaySongIcon';
+import PlaySongIconQueue from '../../../icons/playSongIcon';
 import style from '../../../styles/queuedTrack';
 
 const QueuedTrack = props => {
@@ -18,7 +18,7 @@ const QueuedTrack = props => {
       }}
     >
       <div className={style.albumArtwork}>
-        <PlaySongIcon />
+        <PlaySongIconQueue />
         <img src={track.albumArt} />
       </div>
       <div className={style.trackInfo}>

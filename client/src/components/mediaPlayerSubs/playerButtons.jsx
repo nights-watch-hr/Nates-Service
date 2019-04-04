@@ -6,28 +6,23 @@ import PlayerControls from './playerButtonsSubs/playerControls';
 import QueueExpand from './playerButtonsSubs/queueExpand';
 import style from '../../../styles/playerButtons';
 
-class PlayerButtons extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      playState: 'paused'
-    };
-  }
-
-  render() {
-    return (
-      <div className={style.playerButtons}>
-        <BuyButton price={this.props.price} />
-        <KeyboardShortcuts />
-        <VolumeControls />
-        <PlayerControls />
-        <QueueExpand
-          queueOpen={this.props.queueOpen}
-          expandQueue={this.props.expandQueue}
-        />
-      </div>
-    );
-  }
-}
+const PlayerButtons = props => {
+  return (
+    <div className={style.playerButtons}>
+      <BuyButton price={props.price} />
+      <KeyboardShortcuts />
+      <VolumeControls />
+      <PlayerControls
+        playState={props.playState}
+        playSong={props.playSong}
+        pauseSong={props.pauseSong}
+      />
+      <QueueExpand
+        queueOpen={props.queueOpen}
+        expandQueue={props.expandQueue}
+      />
+    </div>
+  );
+};
 
 export default PlayerButtons;
