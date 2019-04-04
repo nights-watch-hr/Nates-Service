@@ -50,7 +50,9 @@ class MediaPlayer extends Component {
           albumArt:
             'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Album+Art/Sapphire-Kartell.jpg',
           waveform:
-            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/SoundWaves/Last_Call-Riviera.svg'
+            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/SoundWaves/Last_Call-Riviera.svg',
+          mp3:
+            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/mp3s/07+Last+Call.m4a'
         },
         {
           id: 3,
@@ -68,7 +70,9 @@ class MediaPlayer extends Component {
           albumArt:
             'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Album+Art/Romance_EP-Darius.jpg',
           waveform:
-            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/SoundWaves/Espoir-Darius.svg'
+            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/SoundWaves/Espoir-Darius.svg',
+          mp3:
+            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/mp3s/01+Espoir.m4a'
         },
         {
           id: 4,
@@ -86,7 +90,9 @@ class MediaPlayer extends Component {
           albumArt:
             'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Album+Art/Romance_EP-Darius.jpg',
           waveform:
-            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/SoundWaves/Omeo-Darius.svg'
+            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/SoundWaves/Omeo-Darius.svg',
+          mp3:
+            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/mp3s/03+Omeo.m4a'
         },
         {
           id: 5,
@@ -104,7 +110,9 @@ class MediaPlayer extends Component {
           albumArt:
             'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Album+Art/Romance_EP-Darius.jpg',
           waveform:
-            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/SoundWaves/Vanyll-Darius.svg'
+            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/SoundWaves/Vanyll-Darius.svg',
+          mp3:
+            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/mp3s/05+Vanyll.m4a'
         }
       ],
       playState: null,
@@ -122,10 +130,12 @@ class MediaPlayer extends Component {
     this.clearQueue = this.clearQueue.bind(this);
     this.playSong = this.playSong.bind(this);
     this.pauseSong = this.pauseSong.bind(this);
+    this.spacePlay = this.spacePlay.bind(this);
   }
 
   componentDidMount() {
     this.applyFirstTrack();
+    document.addEventListener('keydown', this.spacePlay);
   }
 
   expandQueue(e) {
@@ -165,7 +175,10 @@ class MediaPlayer extends Component {
   applyNewCurrentTrack(e, index) {
     e.preventDefault();
     let currentTrack = this.state.queuedTracks[index];
-    this.setState({ currentTrack, currentTrackIndex: index });
+    this.setState({ currentTrack, currentTrackIndex: index }, () => {
+      this.currentTrack.load();
+      this.playSong();
+    });
   }
 
   removeFromQueue(e, index) {
@@ -206,6 +219,19 @@ class MediaPlayer extends Component {
   pauseSong() {
     this.currentTrack.pause();
     this.setState({ playState: 'paused' });
+  }
+
+  spacePlay(e) {
+    if (e.code === 'Space') {
+      if (
+        (this.state.playState === null && this.state.currentTrack) ||
+        this.state.playState === 'paused'
+      ) {
+        this.playSong();
+      } else {
+        this.pauseSong();
+      }
+    }
   }
 
   render() {
