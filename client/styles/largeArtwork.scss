@@ -1,11 +1,12 @@
 .largeArtwork {
   height: 252px;
-  background-color: #191919;
   position: fixed;
   bottom: 67px;
   left: 0;
   z-index: -1;
+  background-color: #191919;
   img {
     height: 250px;
+    margin: 1px 0;
   }
 }
