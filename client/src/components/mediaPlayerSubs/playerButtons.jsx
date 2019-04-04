@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import BuyButton from './buyButton';
+import BuyButton from './buyButtonMediaPlayer';
 import KeyboardShortcuts from './playerButtonsSubs/keyboardShortcuts';
 import VolumeControls from './playerButtonsSubs/volumeControls';
 import PlayerControls from './playerButtonsSubs/playerControls';

@@ -19,7 +19,7 @@
 
 .trackInfo {
   display: flex;
-  flex: 0 3 40vw;
+  flex: 0 1 40vw;
   flex-wrap: nowrap;
   flex-direction: column;
   justify-content: center;
@@ -54,6 +54,19 @@
   color: #8c8c8c;
 }
 
+.titleAndVersion:hover {
+  .title {
+    color: #94d500;
+  }
+  .version {
+    color: #688727;
+  }
+}
+
+.artist:hover {
+  color: #94d500;
+}
+
 .genre {
   @extend .trackInfo;
   flex: 0 1 16.9vw;
@@ -70,8 +83,20 @@
   }
 }
 
+.genre:hover {
+  color: #94d500;
+}
+
 .djInfo {
-  @extend .genre;
+  @extend .trackInfo;
+  flex: 0 1 16.9vw;
+  margin-right: 25px;
+  box-sizing: content-box;
+  span {
+    margin: 1.5px 0;
+    font: 100 1em/1.25 SourceSans, sans-serif;
+    letter-spacing: 0.5px;
+  }
   .bpm {
     color: #8c8c8c;
     font-size: 1.07em;
@@ -79,7 +104,7 @@
 }
 
 .label {
-  @extend .djInfo;
+  @extend .genre;
   .releaseDate {
     color: #8c8c8c;
     font-size: 1.07em;

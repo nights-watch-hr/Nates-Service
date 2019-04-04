@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import DownArrowIcon from '../../../icons/downArrowIcon';
-import style from '../../../styles/buyButton';
+import style from '../../../styles/buyButtonQueue';
 
-class buyButton extends Component {
+class BuyButton extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,7 +13,7 @@ class buyButton extends Component {
 
   render() {
     return (
-      <div className={style.buyButtonContainer}>
+      <div className={style.buyButtonContainerQueue}>
         <div id="buy-button">
           <button className={style.buyButton}>
             <span>${this.props.price}</span>
@@ -22,7 +22,7 @@ class buyButton extends Component {
             {this.state.loading && (
               <div id="loading-menu-icon">
                 <img src="" />
-                {/* beatport uses an svg here for animation */}
+                {/* use svg here for animation */}
               </div>
             )}
             {!this.state.loading && (
@@ -37,4 +37,4 @@ class buyButton extends Component {
   }
 }
 
-export default buyButton;
+export default BuyButton;

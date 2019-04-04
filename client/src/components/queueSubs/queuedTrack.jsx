@@ -1,5 +1,5 @@
 import React from 'react';
-import BuyButton from '../mediaPlayerSubs/buyButton';
+import BuyButton from '../queueSubs/buyButtonQueue';
 import RemoveFromQueueIcon from '../../../icons/removeFromQueueIcon';
 import style from '../../../styles/queuedTrack';
 
@@ -20,7 +20,7 @@ const QueuedTrack = props => {
         <img src={track.albumArt} />
       </div>
       <div className={style.trackInfo}>
-        <span>
+        <span className={style.titleAndVersion}>
           <a className={style.title} href={`localhost:3737?id=${track.id}`}>
             {track.title}
           </a>

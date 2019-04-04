@@ -7,6 +7,7 @@
 @media only screen and (max-width: 900px) {
   .trackInfoDiv {
     width: 33vw;
+    overflow: hidden;
   }
 }
 
@@ -18,9 +19,6 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .trackInfoDiv {
-    width: 20vw;
-  }
   .albumArt {
     visibility: hidden;
     width: 0;
@@ -47,6 +45,12 @@
 .arrowDown {
   svg {
     fill: #999999;
+  }
+}
+
+.artworkToggle:hover {
+  svg {
+    fill: #94d500;
   }
 }
 
