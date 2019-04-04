@@ -5,6 +5,11 @@
   margin-bottom: 1px;
 }
 
+.currentTrack {
+  @extend .queuedTrack;
+  background-color: #333333;
+}
+
 .albumArtwork {
   img {
     height: 52px;

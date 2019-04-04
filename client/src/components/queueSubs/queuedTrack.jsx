@@ -6,7 +6,16 @@ import style from '../../../styles/queuedTrack';
 const QueuedTrack = props => {
   const { track } = props;
   return (
-    <li className={style.queuedTrack}>
+    <li
+      className={
+        props.index === props.currentTrackIndex
+          ? style.currentTrack
+          : style.queuedTrack
+      }
+      onClick={e => {
+        props.applyNewCurrentTrack(e, props.index);
+      }}
+    >
       <div className={style.albumArtwork}>
         <img src={track.albumArt} />
       </div>

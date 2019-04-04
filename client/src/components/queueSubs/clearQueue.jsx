@@ -5,7 +5,9 @@ import style from '../../../styles/ClearQueue';
 const ClearQueue = props => {
   return (
     <div className={style.clearQueueContainer}>
-      <a href="">CLEAR QUEUE</a>
+      <a onClick={props.clearQueue} href="">
+        CLEAR QUEUE
+      </a>
       <a className={style.closeQueue} onClick={props.expandQueue} href="">
         <DownArrowInCircleIcon />
       </a>

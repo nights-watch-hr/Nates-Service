@@ -12,6 +12,7 @@ class MediaPlayer extends Component {
     super(props);
     this.state = {
       currentTrack: null,
+      currentTrackIndex: 0,
       queuedTracks: [
         {
           id: 1,
@@ -47,7 +48,9 @@ class MediaPlayer extends Component {
           length: 176,
           price: 1.49,
           albumArt:
-            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Album+Art/Sapphire-Kartell.jpg'
+            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Album+Art/Sapphire-Kartell.jpg',
+          waveform:
+            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/SoundWaves/Last_Call-Riviera.svg'
         },
         {
           id: 3,
@@ -63,7 +66,9 @@ class MediaPlayer extends Component {
           length: 242,
           price: 1.49,
           albumArt:
-            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Album+Art/Romance_EP-Darius.jpg'
+            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Album+Art/Romance_EP-Darius.jpg',
+          waveform:
+            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/SoundWaves/Espoir-Darius.svg'
         },
         {
           id: 4,
@@ -79,7 +84,9 @@ class MediaPlayer extends Component {
           length: 210,
           price: 1.49,
           albumArt:
-            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Album+Art/Romance_EP-Darius.jpg'
+            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Album+Art/Romance_EP-Darius.jpg',
+          waveform:
+            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/SoundWaves/Omeo-Darius.svg'
         },
         {
           id: 5,
@@ -95,7 +102,9 @@ class MediaPlayer extends Component {
           length: 240,
           price: 1.49,
           albumArt:
-            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Album+Art/Romance_EP-Darius.jpg'
+            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Album+Art/Romance_EP-Darius.jpg',
+          waveform:
+            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/SoundWaves/Vanyll-Darius.svg'
         }
       ],
       queueOpen: false,
@@ -106,7 +115,9 @@ class MediaPlayer extends Component {
     this.expandQueue = this.expandQueue.bind(this);
     this.expandArtwork = this.expandArtwork.bind(this);
     this.applyFirstTrack = this.applyFirstTrack.bind(this);
+    this.applyNewCurrentTrack = this.applyNewCurrentTrack.bind(this);
     this.removeFromQueue = this.removeFromQueue.bind(this);
+    this.clearQueue = this.clearQueue.bind(this);
   }
 
   componentDidMount() {
@@ -141,6 +152,12 @@ class MediaPlayer extends Component {
     this.setState({ currentTrack });
   }
 
+  applyNewCurrentTrack(e, index) {
+    e.preventDefault();
+    let currentTrack = this.state.queuedTracks[index];
+    this.setState({ currentTrack, currentTrackIndex: index });
+  }
+
   removeFromQueue(e, index) {
     e.preventDefault();
     if (
@@ -163,6 +180,14 @@ class MediaPlayer extends Component {
     }
   }
 
+  clearQueue(e) {
+    e.preventDefault();
+    this.setState({
+      currentTrack: null,
+      songsInQueue: null
+    });
+  }
+
   render() {
     if (this.state.currentTrack) {
       return (
@@ -179,13 +204,15 @@ class MediaPlayer extends Component {
           >
             {this.state.queueOpen && (
               <PopUpQueue
-                key="PopUpQueue"
                 albumArt={this.state.currentTrack.albumArt}
                 queuedTracks={this.state.queuedTracks}
+                currentTrackIndex={this.state.currentTrackIndex}
                 artworkEnlarged={this.state.artworkEnlarged}
                 artworkEnlargedAnimation={this.state.artworkEnlargedAnimation}
                 expandQueue={this.expandQueue}
+                applyNewCurrentTrack={this.applyNewCurrentTrack}
                 removeFromQueue={this.removeFromQueue}
+                clearQueue={this.clearQueue}
               />
             )}
           </CSSTransitionGroup>

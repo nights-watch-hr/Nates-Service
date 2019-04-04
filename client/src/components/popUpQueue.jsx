@@ -20,7 +20,10 @@ const MediaPlayerWithQueue = props => {
   return (
     <div>
       <div>
-        <ClearQueue expandQueue={props.expandQueue} />
+        <ClearQueue
+          expandQueue={props.expandQueue}
+          clearQueue={props.clearQueue}
+        />
       </div>
       <div>
         <LargeArtwork
@@ -35,7 +38,9 @@ const MediaPlayerWithQueue = props => {
               key={index}
               index={index}
               track={track}
+              currentTrackIndex={props.currentTrackIndex}
               removeFromQueue={props.removeFromQueue}
+              applyNewCurrentTrack={props.applyNewCurrentTrack}
             />
           ))}
         </ul>

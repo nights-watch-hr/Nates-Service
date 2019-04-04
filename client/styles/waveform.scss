@@ -24,6 +24,7 @@
   font-weight: 300;
   font-size: 12.7px;
   letter-spacing: 0.73px;
+  cursor: default;
 }
 
 .clickZone {
@@ -44,6 +45,7 @@
   margin-right: 1px;
   padding: 0px 15px 0 7px;
   background: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
   svg {
     fill: #fff;
     vertical-align: middle;
