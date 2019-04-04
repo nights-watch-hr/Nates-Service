@@ -100,6 +100,12 @@
   }
 }
 
+.title:hover {
+  span {
+    color: #ebebeb;
+  }
+}
+
 .version {
   font: 100 1.077em/1.25 SourceSans, sans-serif;
   letter-spacing: 1px;
@@ -108,6 +114,10 @@
 .artist {
   font: 550 1.077em/1.25 SourceSans, sans-serif;
   letter-spacing: 1px;
+}
+
+.artist:hover {
+  color: #ebebeb;
 }
 
 .transitionGroup {

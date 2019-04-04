@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import DownArrowIcon from '../../../icons/downArrowIcon';
 import style from '../../../styles/buyButton';
 
-class buyButton extends Component {
+class BuyButton extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -37,4 +37,4 @@ class buyButton extends Component {
   }
 }
 
-export default buyButton;
+export default BuyButton;

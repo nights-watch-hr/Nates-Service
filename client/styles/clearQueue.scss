@@ -20,6 +20,10 @@
   }
 }
 
+.clearQueue:hover {
+  color: hsla(0, 0%, 100%, 0.8);
+}
+
 .closeQueue {
   display: flex;
   align-items: center;
@@ -27,5 +31,11 @@
   justify-content: center;
   svg {
     fill: #999999;
+  }
+}
+
+.closeQueue:hover {
+  svg {
+    fill: #94d500;
   }
 }
