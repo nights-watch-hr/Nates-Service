@@ -15,8 +15,8 @@ const TrackInfo = props => {
             leave: animation.artworkLeave,
             leaveActive: animation.artworkLeaveActive
           }}
-          transitionEnterTimeout={300}
-          transitionLeaveTimeout={300}
+          transitionEnterTimeout={200}
+          transitionLeaveTimeout={200}
         >
           {(!props.artworkEnlarged || !props.queueOpen) && (
             <img className={style.albumArt} src={props.track.albumArt} />
@@ -30,8 +30,8 @@ const TrackInfo = props => {
           leave: animation.toggleLeave,
           leaveActive: animation.toggleLeaveActive
         }}
-        transitionEnterTimeout={300}
-        transitionLeaveTimeout={300}
+        transitionEnterTimeout={200}
+        transitionLeaveTimeout={200}
         className={style.transitionGroup}
       >
         {props.queueOpen && (

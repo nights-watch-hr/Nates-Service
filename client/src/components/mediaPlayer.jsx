@@ -146,6 +146,7 @@ class MediaPlayer extends Component {
         artworkEnlargedAnimation: 'showArt'
       });
     }
+    setTimeout(() => this.setState({ artworkEnlargedAnimation: null }), 200);
   }
 
   render() {
@@ -158,9 +159,8 @@ class MediaPlayer extends Component {
             leave: animation.queueLeave,
             leaveActive: animation.queueLeaveActive
           }}
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={500}
-          className={style.transitionGroup}
+          transitionEnterTimeout={200}
+          transitionLeaveTimeout={200}
         >
           {this.state.queueOpen && (
             <PopUpQueue
