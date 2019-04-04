@@ -17,3 +17,14 @@
     fill: #a1d241;
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .queueExpandContainerClosed {
+    visibility: hidden;
+    width: 0;
+  }
+  .queueExpandContainerOpen {
+    visibility: hidden;
+    width: 0;
+  }
+}
