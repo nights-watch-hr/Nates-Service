@@ -5,7 +5,7 @@ import style from '../../../styles/currentTrackInfo';
 const TrackInfo = props => {
   return (
     <div className={style.trackInfoDiv}>
-      {!props.artworkEnlarged && (
+      {(!props.artworkEnlarged || !props.queueOpen) && (
         <a href={`localhost:3737?id=${props.track.id}`}>
           <img className={style.albumArt} src={props.track.albumArt} />
         </a>

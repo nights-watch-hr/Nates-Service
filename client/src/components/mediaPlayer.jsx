@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { CSSTransitionGroup } from 'react-transition-group';
 import CurrentTrackInfo from './mediaPlayerSubs/currentTrackInfo';
 import WaveformContainer from './mediaPlayerSubs/waveformContainer';
 import PlayerButtons from './mediaPlayerSubs/playerButtons';
 import PopUpQueue from './popUpQueue';
 import style from '../../styles/mediaPlayer';
+import animation from '../../styles/animation';
 
 class MediaPlayer extends Component {
   constructor(props) {
@@ -115,8 +117,8 @@ class MediaPlayer extends Component {
             'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Album+Art/Romance_EP-Darius.jpg'
         }
       ],
-      queueOpen: true,
-      artworkEnlarged: false
+      queueOpen: false,
+      artworkEnlarged: true
     };
     this.expandQueue = this.expandQueue.bind(this);
     this.expandArtwork = this.expandArtwork.bind(this);
@@ -139,13 +141,25 @@ class MediaPlayer extends Component {
   render() {
     return (
       <div>
-        {this.state.queueOpen && (
-          <PopUpQueue
-            albumArt={this.state.currentTrack.albumArt}
-            queuedTracks={this.state.queuedTracks}
-            artworkEnlarged={this.state.artworkEnlarged}
-          />
-        )}
+        <CSSTransitionGroup
+          transitionName={{
+            enter: animation.queueEnter,
+            enterActive: animation.queueEnterActive,
+            leave: animation.queueLeave,
+            leaveActive: animation.queueLeaveActive
+          }}
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={500}
+        >
+          {this.state.queueOpen && (
+            <PopUpQueue
+              key="PopUpQueue"
+              albumArt={this.state.currentTrack.albumArt}
+              queuedTracks={this.state.queuedTracks}
+              artworkEnlarged={this.state.artworkEnlarged}
+            />
+          )}
+        </CSSTransitionGroup>
         {this.state.currentTrack && (
           <section className={style.fixed}>
             <CurrentTrackInfo
