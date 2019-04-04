@@ -6,9 +6,9 @@ const ClearQueue = props => {
   return (
     <div className={style.clearQueueContainer}>
       <a href="">CLEAR QUEUE</a>
-      <div className={style.closeQueue}>
+      <a className={style.closeQueue} onClick={props.expandQueue} href="">
         <DownArrowInCircleIcon />
-      </div>
+      </a>
     </div>
   );
 };

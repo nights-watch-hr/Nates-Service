@@ -11,26 +11,7 @@ class MediaPlayer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentTrack: {
-        id: 1,
-        title: 'Riviera',
-        version: 'Original Mix',
-        artist: 'Kartell',
-        album: 'Riviera',
-        genre: 'Indie Dance / Nu Disco',
-        label: 'Roche Musique',
-        released: '2012-05-21',
-        key: 'A min',
-        bpm: 122,
-        length: 327,
-        price: 1.49,
-        albumArt:
-          'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Album+Art/Riviera-Kartell.jpg',
-        waveform:
-          'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/SoundWaves/Riviera-Kartell.svg',
-        mp3:
-          'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/mp3s/04+Riviera.m4a'
-      },
+      currentTrack: null,
       queuedTracks: [
         {
           id: 1,
@@ -124,6 +105,12 @@ class MediaPlayer extends Component {
     };
     this.expandQueue = this.expandQueue.bind(this);
     this.expandArtwork = this.expandArtwork.bind(this);
+    this.applyFirstTrack = this.applyFirstTrack.bind(this);
+    this.removeFromQueue = this.removeFromQueue.bind(this);
+  }
+
+  componentDidMount() {
+    this.applyFirstTrack();
   }
 
   expandQueue(e) {
@@ -149,30 +136,59 @@ class MediaPlayer extends Component {
     setTimeout(() => this.setState({ artworkEnlargedAnimation: null }), 200);
   }
 
+  applyFirstTrack() {
+    let currentTrack = this.state.queuedTracks[0];
+    this.setState({ currentTrack });
+  }
+
+  removeFromQueue(e, index) {
+    e.preventDefault();
+    if (
+      JSON.stringify(this.state.queuedTracks[index]) ===
+        JSON.stringify(this.state.currentTrack) &&
+      this.state.queuedTracks.length >= 1
+    ) {
+      let { queuedTracks } = this.state;
+      queuedTracks.splice(index, 1);
+      this.setState({ queuedTracks }, () => this.applyFirstTrack());
+    } else if (
+      JSON.stringify(this.state.queuedTracks[index]) !==
+      JSON.stringify(this.state.currentTrack)
+    ) {
+      let { queuedTracks } = this.state;
+      queuedTracks.splice(index, 1);
+      this.setState({ queuedTracks });
+    } else if (this.state.queuedTracks.length === 1) {
+      this.setState({ currentTrack: null });
+    }
+  }
+
   render() {
-    return (
-      <div>
-        <CSSTransitionGroup
-          transitionName={{
-            enter: animation.queueEnter,
-            enterActive: animation.queueEnterActive,
-            leave: animation.queueLeave,
-            leaveActive: animation.queueLeaveActive
-          }}
-          transitionEnterTimeout={200}
-          transitionLeaveTimeout={200}
-        >
-          {this.state.queueOpen && (
-            <PopUpQueue
-              key="PopUpQueue"
-              albumArt={this.state.currentTrack.albumArt}
-              queuedTracks={this.state.queuedTracks}
-              artworkEnlarged={this.state.artworkEnlarged}
-              artworkEnlargedAnimation={this.state.artworkEnlargedAnimation}
-            />
-          )}
-        </CSSTransitionGroup>
-        {this.state.currentTrack && (
+    if (this.state.currentTrack) {
+      return (
+        <div>
+          <CSSTransitionGroup
+            transitionName={{
+              enter: animation.queueEnter,
+              enterActive: animation.queueEnterActive,
+              leave: animation.queueLeave,
+              leaveActive: animation.queueLeaveActive
+            }}
+            transitionEnterTimeout={200}
+            transitionLeaveTimeout={200}
+          >
+            {this.state.queueOpen && (
+              <PopUpQueue
+                key="PopUpQueue"
+                albumArt={this.state.currentTrack.albumArt}
+                queuedTracks={this.state.queuedTracks}
+                artworkEnlarged={this.state.artworkEnlarged}
+                artworkEnlargedAnimation={this.state.artworkEnlargedAnimation}
+                expandQueue={this.expandQueue}
+                removeFromQueue={this.removeFromQueue}
+              />
+            )}
+          </CSSTransitionGroup>
           <section className={style.fixed}>
             <CurrentTrackInfo
               track={this.state.currentTrack}
@@ -187,9 +203,11 @@ class MediaPlayer extends Component {
               expandQueue={this.expandQueue}
             />
           </section>
-        )}
-      </div>
-    );
+        </div>
+      );
+    } else {
+      return null;
+    }
   }
 }
 

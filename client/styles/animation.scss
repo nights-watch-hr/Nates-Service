@@ -53,15 +53,19 @@
 }
 .toggleEnter {
   opacity: 0;
+  width: 0;
 }
 .toggleEnterActive {
   opacity: 1;
-  transition: opacity 200ms ease;
+  width: 25px;
+  transition: opacity 200ms ease, width 200ms ease;
 }
 .toggleLeave {
   opacity: 1;
+  width: 25px;
 }
 .toggleLeaveActive {
   opacity: 0;
-  transition: opacity 200ms ease;
+  width: 0;
+  transition: opacity 200ms ease, width 200ms ease;
 }

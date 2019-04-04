@@ -20,7 +20,7 @@ const MediaPlayerWithQueue = props => {
   return (
     <div>
       <div>
-        <ClearQueue />
+        <ClearQueue expandQueue={props.expandQueue} />
       </div>
       <div>
         <LargeArtwork
@@ -31,7 +31,12 @@ const MediaPlayerWithQueue = props => {
       <div className={conditionalArtworkStyling}>
         <ul id="tracks-in-queue-list">
           {props.queuedTracks.map((track, index) => (
-            <QueuedTrack key={index} track={track} />
+            <QueuedTrack
+              key={index}
+              index={index}
+              track={track}
+              removeFromQueue={props.removeFromQueue}
+            />
           ))}
         </ul>
       </div>

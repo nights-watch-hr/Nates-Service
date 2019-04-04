@@ -35,7 +35,7 @@ const QueuedTrack = props => {
         <BuyButton price={track.price} />
       </div>
       <div className={style.removeFromQueue}>
-        <a href="">
+        <a onClick={e => props.removeFromQueue(e, props.index)} href="">
           <RemoveFromQueueIcon />
         </a>
       </div>

@@ -15,8 +15,6 @@ class volumeControls extends Component {
       <div className={style.volumeControlsContainer}>
         <a>
           <VolumeIcon />
-          {/* <img src="" /> */}
-          {/* volume off - beatport uses an svg here, but it may not be necessary*/}
         </a>
         <div className={style.volumeDrop}>
           <input type="range" orient="vertical" defaultValue="75" />
