@@ -14,7 +14,6 @@ class WaveformContainer extends Component {
   }
 
   render() {
-    console.log(this.props.playTime);
     let percentageFromLeft =
       (this.props.playTime / this.props.track.length) * 100;
     let trackerStyling = { left: `${percentageFromLeft}%` };

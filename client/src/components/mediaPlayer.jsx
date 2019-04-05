@@ -115,7 +115,7 @@ class MediaPlayer extends Component {
             'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/mp3s/05+Vanyll.m4a'
         }
       ],
-      playTime: 1,
+      playTime: 0,
       playState: null,
       queueOpen: false,
       queueOpenAnimation: null,
@@ -180,7 +180,7 @@ class MediaPlayer extends Component {
     let currentTrack = this.state.queuedTracks[0];
     clearInterval(this.timer);
     clearInterval(this.checkEnd);
-    this.setState({ currentTrack, currentTrackIndex: 0, playTime: 1 }, () => {
+    this.setState({ currentTrack, currentTrackIndex: 0, playTime: 0 }, () => {
       this.currentTrack.load();
     });
   }
@@ -191,7 +191,7 @@ class MediaPlayer extends Component {
     clearInterval(this.timer);
     clearInterval(this.checkEnd);
     this.setState(
-      { currentTrack, currentTrackIndex: index, playTime: 1 },
+      { currentTrack, currentTrackIndex: index, playTime: 0 },
       () => {
         this.currentTrack.load();
         this.playSong();
@@ -254,7 +254,7 @@ class MediaPlayer extends Component {
       clearInterval(this.timer);
       clearInterval(this.checkEnd);
       this.setState(
-        { currentTrack, currentTrackIndex: previousTrackIndex, playTime: 1 },
+        { currentTrack, currentTrackIndex: previousTrackIndex, playTime: 0 },
         () => {
           this.currentTrack.load();
           this.playSong();
@@ -270,7 +270,7 @@ class MediaPlayer extends Component {
       clearInterval(this.timer);
       clearInterval(this.checkEnd);
       this.setState(
-        { currentTrack, currentTrackIndex: nextTrackIndex, playTime: 1 },
+        { currentTrack, currentTrackIndex: nextTrackIndex, playTime: 0 },
         () => {
           this.currentTrack.load();
           this.playSong();

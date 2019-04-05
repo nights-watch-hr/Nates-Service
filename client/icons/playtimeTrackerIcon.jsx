@@ -6,7 +6,7 @@ const PlaytimeTrackerIcon = () => (
     xmlnsXlink="http://www.w3.org/1999/xlink"
     height="55"
     width="19"
-    viewBox="7 -3 14.707 14.707"
+    viewBox="7 -3.7 14.707 14.707"
     preserveAspectRatio="none"
   >
     <g>
