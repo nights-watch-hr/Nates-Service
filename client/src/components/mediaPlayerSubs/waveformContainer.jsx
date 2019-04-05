@@ -11,6 +11,13 @@ class WaveformContainer extends Component {
     this.state = {
       zoomed: false
     };
+    this.zoom = this.zoom.bind(this);
+  }
+
+  zoom(e) {
+    e.preventDefault();
+    let zoomed = !this.state.zoomed;
+    this.setState({ zoomed });
   }
 
   render() {
@@ -38,7 +45,7 @@ class WaveformContainer extends Component {
         <div className={style.clickZone} onClick={this.props.alterTime} />
         {/* do we need this canvas for color change? <canvas id="waveform-svg" width="1050" height="90" /> */}
         <Waveform svg={this.props.track.waveform} />
-        <a className={style.zoomButton}>
+        <a className={style.zoomButton} onClick={this.zoom}>
           {this.state.zoomed && <MinusSignIcon />}
           {!this.state.zoomed && <PlusSignIcon />}
         </a>
