@@ -314,7 +314,7 @@ class MediaPlayer extends Component {
       if (this.state.currentTrackIndex === this.state.queuedTracks.length - 1) {
         clearInterval(this.timer);
         clearInterval(this.checkEnd);
-        this.setState({ currentTrack: null, playState: null });
+        this.setState({ playState: 'paused', playTime: 0 });
       } else {
         this.nextSong();
       }

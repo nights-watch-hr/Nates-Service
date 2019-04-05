@@ -2,6 +2,9 @@
   width: 41.73vw;
   justify-content: center;
   position: relative;
+  a {
+    cursor: pointer;
+  }
 }
 
 @media only screen and (max-width: 900px) {
@@ -35,10 +38,18 @@
   }
 }
 
+.clickZone {
+  @extend .waveformDiv;
+  height: 52px;
+  position: absolute;
+  bottom: 7px;
+  left: 0;
+  z-index: 2;
+}
+
 .zoomButton {
   position: absolute;
-  display: block;
-  z-index: 2;
+  z-index: 3;
   top: 0;
   right: 0;
   height: 23px;
