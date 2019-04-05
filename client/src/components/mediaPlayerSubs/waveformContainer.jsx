@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Waveform from '../mediaPlayerSubs/waveform';
 import PlusSignIcon from '../../../icons/plusSignIcon';
 import MinusSignIcon from '../../../icons/minusSignIcon';
+import PlaytimeTrackerIcon from '../../../icons/playtimeTrackerIcon';
 import style from '../../../styles/waveform';
 
 class WaveformContainer extends Component {

@@ -116,6 +116,7 @@ class MediaPlayer extends Component {
         }
       ],
       playState: null,
+      playTime: 0,
       queueOpen: false,
       queueOpenAnimation: null,
       artworkEnlarged: true,
@@ -133,6 +134,10 @@ class MediaPlayer extends Component {
     this.previousSong = this.previousSong.bind(this);
     this.nextSong = this.nextSong.bind(this);
     this.spacePlay = this.spacePlay.bind(this);
+    this.trackTime = this.trackTime.bind(this);
+    this.checkSongEnd = this.checkSongEnd.bind(this);
+    this.timer;
+    this.checkEnd;
   }
 
   componentDidMount() {
@@ -216,11 +221,15 @@ class MediaPlayer extends Component {
   playSong() {
     this.currentTrack.play();
     this.setState({ playState: 'playing' });
+    this.timer = setInterval(this.trackTime, 50);
+    this.checkEnd = setInterval(this.checkSongEnd, 1000);
   }
 
   pauseSong() {
     this.currentTrack.pause();
     this.setState({ playState: 'paused' });
+    clearInterval(this.timer);
+    clearInterval(this.checkEnd);
   }
 
   previousSong() {
@@ -228,7 +237,7 @@ class MediaPlayer extends Component {
       let previousTrackIndex = this.state.currentTrackIndex - 1;
       let currentTrack = this.state.queuedTracks[previousTrackIndex];
       this.setState(
-        { currentTrack, currentTrackIndex: previousTrackIndex },
+        { currentTrack, currentTrackIndex: previousTrackIndex, playTime: 0 },
         () => {
           this.currentTrack.load();
           this.playSong();
@@ -241,10 +250,14 @@ class MediaPlayer extends Component {
     if (this.state.currentTrackIndex !== this.state.queuedTracks.length - 1) {
       let nextTrackIndex = this.state.currentTrackIndex + 1;
       let currentTrack = this.state.queuedTracks[nextTrackIndex];
-      this.setState({ currentTrack, currentTrackIndex: nextTrackIndex }, () => {
-        this.currentTrack.load();
-        this.playSong();
-      });
+      this.setState(
+        { currentTrack, currentTrackIndex: nextTrackIndex, playTime: 0 },
+        () => {
+          this.currentTrack.load();
+          this.timer = 0;
+          this.playSong();
+        }
+      );
     }
   }
 
@@ -258,6 +271,17 @@ class MediaPlayer extends Component {
       } else {
         this.pauseSong();
       }
+    }
+  }
+
+  trackTime() {
+    let playTime = this.state.playTime + 0.05;
+    this.setState({ playTime });
+  }
+
+  checkSongEnd() {
+    if (this.state.playTime > this.state.currentTrack.length) {
+      this.nextSong();
     }
   }
 
@@ -291,6 +315,7 @@ class MediaPlayer extends Component {
             )}
           </CSSTransitionGroup>
           <audio
+            controls
             ref={currentTrack => {
               this.currentTrack = currentTrack;
             }}
