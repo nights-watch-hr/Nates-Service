@@ -14,12 +14,13 @@ class WaveformContainer extends Component {
   }
 
   render() {
+    console.log(this.props.playTime);
     let percentageFromLeft =
       (this.props.playTime / this.props.track.length) * 100;
     let trackerStyling = { left: `${percentageFromLeft}%` };
 
     return (
-      <div className={style.waveformDiv}>
+      <div className={style.waveformDiv} onClick={this.props.alterTime}>
         <span style={trackerStyling} className={style.playtimeTracker}>
           <PlaytimeTrackerIcon />
         </span>
@@ -31,8 +32,7 @@ class WaveformContainer extends Component {
             {this.props.calculateLengthInMinutes(this.props.track.length)}
           </span>
         </div>
-        <div className={style.clickZone} />
-        {/* do we need this canvas? <canvas id="waveform-svg" width="1050" height="90" /> */}
+        {/* do we need this canvas for color change? <canvas id="waveform-svg" width="1050" height="90" /> */}
         <Waveform svg={this.props.track.waveform} />
         <div className={style.zoomButton}>
           {this.state.zoomed && <MinusSignIcon />}

@@ -115,8 +115,8 @@ class MediaPlayer extends Component {
             'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/mp3s/05+Vanyll.m4a'
         }
       ],
+      playTime: 1,
       playState: null,
-      playTime: 0,
       queueOpen: false,
       queueOpenAnimation: null,
       artworkEnlarged: true,
@@ -135,7 +135,9 @@ class MediaPlayer extends Component {
     this.nextSong = this.nextSong.bind(this);
     this.spacePlay = this.spacePlay.bind(this);
     this.trackTime = this.trackTime.bind(this);
+    this.alterTime = this.alterTime.bind(this);
     this.checkSongEnd = this.checkSongEnd.bind(this);
+    this.currentTrack;
     this.timer;
     this.checkEnd;
   }
@@ -176,16 +178,25 @@ class MediaPlayer extends Component {
 
   applyFirstTrack() {
     let currentTrack = this.state.queuedTracks[0];
-    this.setState({ currentTrack });
+    clearInterval(this.timer);
+    clearInterval(this.checkEnd);
+    this.setState({ currentTrack, currentTrackIndex: 0, playTime: 1 }, () => {
+      this.currentTrack.load();
+    });
   }
 
   applyNewCurrentTrack(e, index) {
     e.preventDefault();
     let currentTrack = this.state.queuedTracks[index];
-    this.setState({ currentTrack, currentTrackIndex: index }, () => {
-      this.currentTrack.load();
-      this.playSong();
-    });
+    clearInterval(this.timer);
+    clearInterval(this.checkEnd);
+    this.setState(
+      { currentTrack, currentTrackIndex: index, playTime: 1 },
+      () => {
+        this.currentTrack.load();
+        this.playSong();
+      }
+    );
   }
 
   removeFromQueue(e, index) {
@@ -195,9 +206,13 @@ class MediaPlayer extends Component {
         JSON.stringify(this.state.currentTrack) &&
       this.state.queuedTracks.length >= 1
     ) {
+      console.log(true);
       let { queuedTracks } = this.state;
       queuedTracks.splice(index, 1);
-      this.setState({ queuedTracks }, () => this.applyFirstTrack());
+      this.setState({ queuedTracks }, () => {
+        console.log('hit');
+        this.applyFirstTrack();
+      });
     } else if (
       JSON.stringify(this.state.queuedTracks[index]) !==
       JSON.stringify(this.state.currentTrack)
@@ -206,7 +221,7 @@ class MediaPlayer extends Component {
       queuedTracks.splice(index, 1);
       this.setState({ queuedTracks });
     } else if (this.state.queuedTracks.length === 1) {
-      this.setState({ currentTrack: null });
+      this.setState({ currentTrack: null, playState: null });
     }
   }
 
@@ -221,7 +236,7 @@ class MediaPlayer extends Component {
   playSong() {
     this.currentTrack.play();
     this.setState({ playState: 'playing' });
-    this.timer = setInterval(this.trackTime, 50);
+    this.timer = setInterval(this.trackTime, 300);
     this.checkEnd = setInterval(this.checkSongEnd, 1000);
   }
 
@@ -236,8 +251,10 @@ class MediaPlayer extends Component {
     if (this.state.currentTrackIndex !== 0) {
       let previousTrackIndex = this.state.currentTrackIndex - 1;
       let currentTrack = this.state.queuedTracks[previousTrackIndex];
+      clearInterval(this.timer);
+      clearInterval(this.checkEnd);
       this.setState(
-        { currentTrack, currentTrackIndex: previousTrackIndex, playTime: 0 },
+        { currentTrack, currentTrackIndex: previousTrackIndex, playTime: 1 },
         () => {
           this.currentTrack.load();
           this.playSong();
@@ -250,11 +267,12 @@ class MediaPlayer extends Component {
     if (this.state.currentTrackIndex !== this.state.queuedTracks.length - 1) {
       let nextTrackIndex = this.state.currentTrackIndex + 1;
       let currentTrack = this.state.queuedTracks[nextTrackIndex];
+      clearInterval(this.timer);
+      clearInterval(this.checkEnd);
       this.setState(
-        { currentTrack, currentTrackIndex: nextTrackIndex, playTime: 0 },
+        { currentTrack, currentTrackIndex: nextTrackIndex, playTime: 1 },
         () => {
           this.currentTrack.load();
-          this.timer = 0;
           this.playSong();
         }
       );
@@ -275,13 +293,31 @@ class MediaPlayer extends Component {
   }
 
   trackTime() {
-    let playTime = this.state.playTime + 0.05;
+    let playTime = this.state.playTime + 0.3;
     this.setState({ playTime });
+  }
+
+  alterTime(e) {
+    let elemCoords = e.target.getBoundingClientRect();
+    let percentTimeInTrack = (e.clientX - elemCoords.x) / elemCoords.width;
+    let secondsTimeInTrack = Math.floor(
+      percentTimeInTrack * this.state.currentTrack.length
+    );
+    this.setState(
+      { playTime: secondsTimeInTrack },
+      () => (this.currentTrack.currentTime = secondsTimeInTrack)
+    );
   }
 
   checkSongEnd() {
     if (this.state.playTime > this.state.currentTrack.length) {
-      this.nextSong();
+      if (this.state.currentTrackIndex === this.state.queuedTracks.length - 1) {
+        clearInterval(this.timer);
+        clearInterval(this.checkEnd);
+        this.setState({ currentTrack: null, playState: null });
+      } else {
+        this.nextSong();
+      }
     }
   }
 
@@ -331,6 +367,7 @@ class MediaPlayer extends Component {
             <WaveformContainer
               track={this.state.currentTrack}
               playTime={this.state.playTime}
+              alterTime={this.alterTime}
               calculateLengthInMinutes={this.calculateLengthInMinutes}
             />
             <PlayerButtons

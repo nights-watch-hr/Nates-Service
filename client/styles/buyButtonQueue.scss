@@ -23,6 +23,8 @@
   line-height: 12px;
   letter-spacing: 0.9px;
   vertical-align: middle;
+  outline: none;
+  cursor: pointer;
 }
 
 .launchMenu {
@@ -37,6 +39,8 @@
   border-color: #d64988;
   border-radius: 0 3px 3px 0;
   transition: background 0.2s;
+  outline: none;
+  cursor: pointer;
   svg {
     fill: #fff;
     vertical-align: middle;

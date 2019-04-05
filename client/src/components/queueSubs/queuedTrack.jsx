@@ -13,15 +13,22 @@ const QueuedTrack = props => {
           ? style.currentTrack
           : style.queuedTrack
       }
-      onClick={e => {
-        props.applyNewCurrentTrack(e, props.index);
-      }}
     >
-      <div className={style.albumArtwork}>
+      <div
+        className={style.albumArtwork}
+        onClick={e => {
+          props.applyNewCurrentTrack(e, props.index);
+        }}
+      >
         <PlaySongIconQueue />
         <img src={track.albumArt} />
       </div>
-      <div className={style.trackInfo}>
+      <div
+        className={style.trackInfo}
+        onClick={e => {
+          props.applyNewCurrentTrack(e, props.index);
+        }}
+      >
         <span className={style.titleAndVersion}>
           <a className={style.title} href={`localhost:3737?id=${track.id}`}>
             {track.title}
@@ -30,25 +37,42 @@ const QueuedTrack = props => {
         </span>
         <span className={style.artist}>{track.artist}</span>
       </div>
-      <div className={style.genre}>
+      <div
+        className={style.genre}
+        onClick={e => {
+          props.applyNewCurrentTrack(e, props.index);
+        }}
+      >
         <span className={style.genreSpan}>{track.genre}</span>
         <span className={style.trackLength}>
           {props.calculateLengthInMinutes(track.length)}
         </span>
       </div>
-      <div className={style.djInfo}>
+      <div
+        className={style.djInfo}
+        onClick={e => {
+          props.applyNewCurrentTrack(e, props.index);
+        }}
+      >
         <span>{track.key}</span>
         <span className={style.bpm}>{track.bpm} BPM</span>
       </div>
-      <div className={style.label}>
+      <div
+        className={style.label}
+        onClick={e => {
+          props.applyNewCurrentTrack(e, props.index);
+        }}
+      >
         <span className={style.labelSpan}>{track.label}</span>
         <span className={style.releaseDate}>{track.released}</span>
       </div>
       <div className={style.buyButtonContainer}>
-        <BuyButton price={track.price} />
+        <a>
+          <BuyButton price={track.price} />
+        </a>
       </div>
       <div className={style.removeFromQueue}>
-        <a onClick={e => props.removeFromQueue(e, props.index)} href="">
+        <a onClick={e => props.removeFromQueue(e, props.index)}>
           <RemoveFromQueueIcon />
         </a>
       </div>

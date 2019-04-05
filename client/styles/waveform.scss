@@ -35,16 +35,10 @@
   }
 }
 
-.clickZone {
-  width: 41.7vw;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-
 .zoomButton {
   position: absolute;
   display: block;
+  z-index: 2;
   top: 0;
   right: 0;
   height: 23px;

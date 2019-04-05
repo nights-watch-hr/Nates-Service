@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import DownArrowIcon from '../../../icons/downArrowIcon';
-import style from '../../../styles/buyButton';
+import style from '../../../styles/buyButtonMediaPlayer';
 
 class BuyButton extends Component {
   constructor(props) {
