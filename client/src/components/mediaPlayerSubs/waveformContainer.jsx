@@ -9,14 +9,20 @@ class WaveformContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      playState: null, // this state applies to when the track is not started or has finished playing. Other values could be paused or playing
       zoomed: false
     };
   }
 
   render() {
+    let percentageFromLeft =
+      (this.props.playTime / this.props.track.length) * 100;
+    let trackerStyling = { left: `${percentageFromLeft}%` };
+
     return (
       <div className={style.waveformDiv}>
+        <span style={trackerStyling} className={style.playtimeTracker}>
+          <PlaytimeTrackerIcon />
+        </span>
         <div className={style.info}>
           <span>{this.props.track.bpm} BPM /</span>
           <span> {this.props.track.key} /</span>
@@ -25,9 +31,7 @@ class WaveformContainer extends Component {
             {this.props.calculateLengthInMinutes(this.props.track.length)}
           </span>
         </div>
-        <div className={style.clickZone}>
-          {/* should scale with the size of the svg and stack on top of it */}
-        </div>
+        <div className={style.clickZone} />
         {/* do we need this canvas? <canvas id="waveform-svg" width="1050" height="90" /> */}
         <Waveform svg={this.props.track.waveform} />
         <div className={style.zoomButton}>

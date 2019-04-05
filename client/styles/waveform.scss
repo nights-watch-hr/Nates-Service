@@ -27,6 +27,14 @@
   cursor: default;
 }
 
+.playtimeTracker {
+  z-index: 1;
+  position: absolute;
+  svg {
+    fill: #fff;
+  }
+}
+
 .clickZone {
   width: 41.7vw;
   position: absolute;

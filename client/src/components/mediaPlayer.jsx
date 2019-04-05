@@ -315,7 +315,6 @@ class MediaPlayer extends Component {
             )}
           </CSSTransitionGroup>
           <audio
-            controls
             ref={currentTrack => {
               this.currentTrack = currentTrack;
             }}
@@ -331,6 +330,7 @@ class MediaPlayer extends Component {
             />
             <WaveformContainer
               track={this.state.currentTrack}
+              playTime={this.state.playTime}
               calculateLengthInMinutes={this.calculateLengthInMinutes}
             />
             <PlayerButtons
