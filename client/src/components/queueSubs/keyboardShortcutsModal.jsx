@@ -17,7 +17,6 @@ const KeyboardShortcutsModal = props => {
             <li>
               <span className={style.label}>toggle play/pause</span>
               <span className={style.shortcut}>
-                <em>p</em> <span className={status.shortcutOr}>or</span>{' '}
                 <em>space</em>
               </span>
             </li>
@@ -25,14 +24,14 @@ const KeyboardShortcutsModal = props => {
               <span className={style.label}>previous track in queue</span>
               <span className={style.shortcut}>
                 {' '}
-                <em>[</em>
+                <em>&#8592;</em>
               </span>
             </li>
             <li>
               <span className={style.label}>next track in queue</span>
               <span className={style.shortcut}>
                 {' '}
-                <em>]</em>
+                <em>&#8594;</em>
               </span>
             </li>
             <li>

@@ -7,7 +7,7 @@ class KeyboardShortcuts extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalOpen: true
+      modalOpen: false
     };
     this.openModal = this.openModal.bind(this);
   }

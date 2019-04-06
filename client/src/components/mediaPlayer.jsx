@@ -133,7 +133,7 @@ class MediaPlayer extends Component {
     this.pauseSong = this.pauseSong.bind(this);
     this.previousSong = this.previousSong.bind(this);
     this.nextSong = this.nextSong.bind(this);
-    this.spacePlay = this.spacePlay.bind(this);
+    this.shortcutListener = this.shortcutListener.bind(this);
     this.trackTime = this.trackTime.bind(this);
     this.alterTime = this.alterTime.bind(this);
     this.checkSongEnd = this.checkSongEnd.bind(this);
@@ -145,7 +145,7 @@ class MediaPlayer extends Component {
 
   componentDidMount() {
     this.applyFirstTrack();
-    document.addEventListener('keydown', this.spacePlay);
+    document.addEventListener('keydown', this.shortcutListener);
   }
 
   expandQueue(e) {
@@ -280,7 +280,7 @@ class MediaPlayer extends Component {
     }
   }
 
-  spacePlay(e) {
+  shortcutListener(e) {
     if (e.code === 'Space') {
       if (
         (this.state.playState === null && this.state.currentTrack) ||
@@ -289,6 +289,14 @@ class MediaPlayer extends Component {
         this.playSong();
       } else {
         this.pauseSong();
+      }
+    } else if (e.code === 'ArrowLeft') {
+      if (this.state.currentTrackIndex !== 0) {
+        this.previousSong();
+      }
+    } else if (e.code === 'ArrowRight') {
+      if (this.state.currentTrackIndex !== this.state.queuedTracks.length - 1) {
+        this.nextSong();
       }
     }
   }
