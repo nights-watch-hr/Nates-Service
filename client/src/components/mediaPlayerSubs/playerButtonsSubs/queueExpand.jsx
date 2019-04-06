@@ -2,7 +2,7 @@ import React from 'react';
 import QueueExpandIcon from '../../../../icons/queueExpandIcon';
 import style from '../../../../styles/queueExpand';
 
-const queueExpand = props => {
+const QueueExpand = props => {
   return (
     <div
       className={
@@ -18,4 +18,4 @@ const queueExpand = props => {
   );
 };
 
-export default queueExpand;
+export default QueueExpand;

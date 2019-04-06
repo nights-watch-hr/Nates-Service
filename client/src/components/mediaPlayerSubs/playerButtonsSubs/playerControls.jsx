@@ -5,7 +5,7 @@ import PlaySongIcon from '../../../../icons/playSongIcon';
 import PauseSongIcon from '../../../../icons/pauseSongIcon';
 import style from '../../../../styles/playerControls';
 
-const playerControls = props => {
+const PlayerControls = props => {
   return (
     <div className={style.playerControlsContainer}>
       <a onClick={props.previousSong}>
@@ -28,4 +28,4 @@ const playerControls = props => {
   );
 };
 
-export default playerControls;
+export default PlayerControls;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import BuyButton from './buyButtonMediaPlayer';
 import KeyboardShortcuts from './playerButtonsSubs/keyboardShortcuts';
 import VolumeControls from './playerButtonsSubs/volumeControls';
@@ -11,7 +11,7 @@ const PlayerButtons = props => {
     <div className={style.playerButtons}>
       <BuyButton price={props.price} />
       <KeyboardShortcuts />
-      <VolumeControls />
+      <VolumeControls adjustVolume={props.adjustVolume} />
       <PlayerControls
         playState={props.playState}
         playSong={props.playSong}

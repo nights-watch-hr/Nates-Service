@@ -137,6 +137,7 @@ class MediaPlayer extends Component {
     this.trackTime = this.trackTime.bind(this);
     this.alterTime = this.alterTime.bind(this);
     this.checkSongEnd = this.checkSongEnd.bind(this);
+    this.adjustVolume = this.adjustVolume.bind(this);
     this.currentTrack;
     this.timer;
     this.checkEnd;
@@ -321,6 +322,10 @@ class MediaPlayer extends Component {
     }
   }
 
+  adjustVolume(e) {
+    this.currentTrack.volume = e.target.value / 100;
+  }
+
   render() {
     if (this.state.currentTrack) {
       return (
@@ -351,6 +356,7 @@ class MediaPlayer extends Component {
             )}
           </CSSTransitionGroup>
           <audio
+            volume="0.75"
             ref={currentTrack => {
               this.currentTrack = currentTrack;
             }}
@@ -379,6 +385,7 @@ class MediaPlayer extends Component {
               pauseSong={this.pauseSong}
               previousSong={this.previousSong}
               nextSong={this.nextSong}
+              adjustVolume={this.adjustVolume}
             />
           </section>
         </div>

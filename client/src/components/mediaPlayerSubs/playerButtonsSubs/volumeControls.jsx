@@ -1,27 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 import VolumeIcon from '../../../../icons/volumeIcon';
 import style from '../../../../styles/volumeControls';
 
-class volumeControls extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentVolume: 75
-    };
-  }
-
-  render() {
-    return (
-      <div className={style.volumeControlsContainer}>
-        <a className={style.volumeIcon}>
-          <VolumeIcon />
-        </a>
-        <div className={style.volumeDrop}>
-          <input type="range" orient="vertical" defaultValue="75" />
-        </div>
+const VolumeControls = props => {
+  return (
+    <div className={style.volumeControlsContainer}>
+      <a className={style.volumeIcon}>
+        <VolumeIcon />
+      </a>
+      <div className={style.volumeDrop}>
+        <input
+          type="range"
+          orient="vertical"
+          defaultValue="75"
+          onChange={props.adjustVolume}
+        />
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
-export default volumeControls;
+export default VolumeControls;

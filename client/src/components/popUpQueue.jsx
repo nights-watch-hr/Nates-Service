@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ClearQueue from './queueSubs/clearQueue';
 import QueuedTrack from './queueSubs/queuedTrack';
 import LargeArtwork from './queueSubs/largeArtwork';
