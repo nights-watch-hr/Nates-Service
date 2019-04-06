@@ -1,0 +1,126 @@
+.modalContainer {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 11;
+  top: 0;
+  right: 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  align-items: center;
+  vertical-align: middle;
+  justify-content: center;
+}
+
+.modalBody {
+  position: relative;
+  float: left;
+  width: 49.29577%;
+  max-height: calc(100% - 30px);
+  margin: 55px 15px 80px;
+  background: #494949;
+  box-shadow: 0 0 75px 5px #000;
+  overflow: auto;
+  ul {
+    list-style: none;
+    li {
+      margin-bottom: 10px;
+      content: '';
+      display: table;
+      clear: both;
+      width: 100%;
+    }
+  }
+  ul:first-child {
+    margin-top: 0;
+  }
+  ul:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.titleBar {
+  width: 100%;
+  background: #373737;
+  padding: 15px;
+  box-sizing: border-box;
+  h1 {
+    font: 200 13px CoreSans, sans-serif;
+    color: #8c8c8c;
+    line-height: 1;
+    margin: 0 30px 0 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+}
+
+.closeModal {
+  font-size: 8px;
+  color: #8c8c8c;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.mainContent {
+  font-size: 1.3em;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  padding: 20px;
+  margin: 0;
+  width: 100%;
+  vertical-align: baseline;
+}
+
+.label {
+  font: 200 12px CoreSans, sans-serif;
+  display: block;
+  width: 37.93103%;
+  float: left;
+  margin-right: 3.44828%;
+  text-align: right;
+  color: #e3e3e3;
+}
+
+.shortcut {
+  font: 200 12px CoreSans, sans-serif;
+  display: block;
+  width: 58.62069%;
+  float: right;
+  margin-right: 0;
+  color: #8c8c8c;
+  em {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: #94d500;
+    line-height: 1;
+    padding: 5px 8px;
+    background: #5a5a5a;
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-style: normal;
+  }
+}
+
+.shortcutOr {
+  font: 200 11px CoreSans, sans-serif;
+  color: #8c8c8c;
+}
