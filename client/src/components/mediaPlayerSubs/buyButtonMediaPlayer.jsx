@@ -7,7 +7,7 @@ class BuyButton extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      menuOpen: true,
+      menuOpen: false,
       inCart: false,
       loading: false
     };

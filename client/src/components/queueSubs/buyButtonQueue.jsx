@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import QueueBuyButtonMenu from '../queueSubs/queueBuyButtonMenu';
 import DownArrowIcon from '../../../icons/downArrowIcon';
 import style from '../../../styles/buyButtonQueue';
 
@@ -6,7 +7,7 @@ class BuyButton extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      menuOpen: true,
+      menuOpen: false,
       inCart: false,
       loading: false
     };
@@ -38,6 +39,7 @@ class BuyButton extends Component {
               </div>
             )}
           </button>
+          {this.state.menuOpen && <QueueBuyButtonMenu />}
         </div>
       </div>
     );
