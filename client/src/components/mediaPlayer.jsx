@@ -207,11 +207,9 @@ class MediaPlayer extends Component {
         JSON.stringify(this.state.currentTrack) &&
       this.state.queuedTracks.length >= 1
     ) {
-      console.log(true);
       let { queuedTracks } = this.state;
       queuedTracks.splice(index, 1);
-      this.setState({ queuedTracks }, () => {
-        console.log('hit');
+      this.setState({ queuedTracks, playState: 'paused' }, () => {
         this.applyFirstTrack();
       });
     } else if (
