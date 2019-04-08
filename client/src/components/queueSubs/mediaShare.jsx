@@ -6,12 +6,12 @@ import style from '../../../styles/mediaShare';
 const MediaShare = props => {
   return (
     <div className={style.mediaShare}>
-      <a className={style.facebook} href="">
+      <span className={style.facebook} href="">
         <FacebookIcon />
-      </a>
-      <a className={style.twitter} href="">
+      </span>
+      <span className={style.twitter}>
         <TwitterIcon />
-      </a>
+      </span>
     </div>
   );
 };

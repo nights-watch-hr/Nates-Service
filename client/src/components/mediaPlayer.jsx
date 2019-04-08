@@ -233,10 +233,14 @@ class MediaPlayer extends Component {
   }
 
   playSong() {
-    this.currentTrack.play();
-    this.setState({ playState: 'playing' });
-    this.timer = setInterval(this.trackTime, 300);
-    this.checkEnd = setInterval(this.checkSongEnd, 1000);
+    this.currentTrack
+      .play()
+      .then(() => {
+        this.setState({ playState: 'playing' });
+        this.timer = setInterval(this.trackTime, 300);
+        this.checkEnd = setInterval(this.checkSongEnd, 1000);
+      })
+      .catch(err => err);
   }
 
   pauseSong() {

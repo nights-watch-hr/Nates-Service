@@ -43,7 +43,7 @@ class WaveformContainer extends Component {
           </span>
         </div>
         <div className={style.clickZone} onClick={this.props.alterTime} />
-        {/* do we need this canvas for color change? <canvas id="waveform-svg" width="1050" height="90" /> */}
+        {/* <canvas id="waveformCanvas" className={style.waveformCanvas} /> */}
         <Waveform svg={this.props.track.waveform} />
         <a className={style.zoomButton} onClick={this.zoom}>
           {this.state.zoomed && <MinusSignIcon />}

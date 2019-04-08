@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const Promise = require('bluebird');
 mongoose.Promise = Promise;
 
+mongoose.set('useCreateIndex', true);
+
 mongoose.connect('mongodb://localhost/airbnbeats', { useNewUrlParser: true });
 
 const db = mongoose.connection;

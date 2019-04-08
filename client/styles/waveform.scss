@@ -64,3 +64,10 @@
     vertical-align: middle;
   }
 }
+
+.waveformCanvas {
+  position: absolute;
+  width: 41.7vw;
+  height: 90px;
+  z-index: 0;
+}
