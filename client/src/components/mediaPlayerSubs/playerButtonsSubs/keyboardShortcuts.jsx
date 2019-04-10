@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import KeyboardShortcutsModal from '../../queueSubs/keyboardShortcutsModal';
 import KeyboardIcon from '../../../../icons/keyboardIcon';
-import style from '../../../../styles/keyboardShortcuts';
+import style from '../../../../styles/keyboardShortcuts.scss';
 
 class KeyboardShortcuts extends Component {
   constructor(props) {

@@ -3,7 +3,7 @@ import PreviousSongIcon from '../../../../icons/previousSongIcon';
 import NextSongIcon from '../../../../icons/nextSongIcon';
 import PlaySongIcon from '../../../../icons/playSongIcon';
 import PauseSongIcon from '../../../../icons/pauseSongIcon';
-import style from '../../../../styles/playerControls';
+import style from '../../../../styles/playerControls.scss';
 
 const PlayerControls = props => {
   return (

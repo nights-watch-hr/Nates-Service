@@ -4,7 +4,7 @@ import KeyboardShortcuts from './playerButtonsSubs/keyboardShortcuts';
 import VolumeControls from './playerButtonsSubs/volumeControls';
 import PlayerControls from './playerButtonsSubs/playerControls';
 import QueueExpand from './playerButtonsSubs/queueExpand';
-import style from '../../../styles/playerButtons';
+import style from '../../../styles/playerButtons.scss';
 
 const PlayerButtons = props => {
   return (

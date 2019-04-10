@@ -4,8 +4,8 @@ import CurrentTrackInfo from './mediaPlayerSubs/currentTrackInfo';
 import WaveformContainer from './mediaPlayerSubs/waveformContainer';
 import PlayerButtons from './mediaPlayerSubs/playerButtons';
 import PopUpQueue from './popUpQueue';
-import style from '../../styles/mediaPlayer';
-import animation from '../../styles/animation';
+import style from '../../styles/mediaPlayer.scss';
+import animation from '../../styles/animation.scss';
 
 class MediaPlayer extends Component {
   constructor(props) {

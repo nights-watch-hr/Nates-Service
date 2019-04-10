@@ -3,7 +3,7 @@ import Waveform from '../mediaPlayerSubs/waveform';
 import PlusSignIcon from '../../../icons/plusSignIcon';
 import MinusSignIcon from '../../../icons/minusSignIcon';
 import PlaytimeTrackerIcon from '../../../icons/playtimeTrackerIcon';
-import style from '../../../styles/waveform';
+import style from '../../../styles/waveform.scss';
 
 class WaveformContainer extends Component {
   constructor(props) {

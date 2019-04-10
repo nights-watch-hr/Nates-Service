@@ -2,7 +2,7 @@ import React from 'react';
 import BuyButton from '../queueSubs/buyButtonQueue';
 import RemoveFromQueueIcon from '../../../icons/removeFromQueueIcon';
 import PlaySongIconQueue from '../../../icons/playSongIcon';
-import style from '../../../styles/queuedTrack';
+import style from '../../../styles/queuedTrack.scss';
 
 const QueuedTrack = props => {
   const { track } = props;

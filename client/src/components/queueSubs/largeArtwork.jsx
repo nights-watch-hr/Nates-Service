@@ -1,6 +1,6 @@
 import React from 'react';
 import MediaShare from './mediaShare';
-import style from '../../../styles/largeArtwork';
+import style from '../../../styles/largeArtwork.scss';
 
 const LargeArtwork = props => {
   return (

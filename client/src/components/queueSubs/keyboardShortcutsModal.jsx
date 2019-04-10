@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../../../styles/KeyboardShortcutsModal';
+import style from '../../../styles/KeyboardShortcutsModal.scss';
 
 const KeyboardShortcutsModal = props => {
   return (

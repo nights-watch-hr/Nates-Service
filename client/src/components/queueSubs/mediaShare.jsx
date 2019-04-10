@@ -1,7 +1,7 @@
 import React from 'react';
 import FacebookIcon from '../../../icons/facebookIcon';
 import TwitterIcon from '../../../icons/twitterIcon';
-import style from '../../../styles/mediaShare';
+import style from '../../../styles/mediaShare.scss';
 
 const MediaShare = props => {
   return (

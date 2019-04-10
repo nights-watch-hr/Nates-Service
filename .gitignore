@@ -1,4 +1,5 @@
 node_modules
 bundle.js
 config.env
+coverage
 .DS_Store

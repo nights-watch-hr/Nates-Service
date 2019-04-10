@@ -1,16 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
 
-import MediaPlayer from '../../Media-Player/client/src/components/mediaPlayer';
+import PlayerButtons from '../client/src/components/mediaPlayerSubs/playerButtons';
 
-describe('<MediaPlayer />', () => {
-  describe('render()', () => {
-    test('renders the component', () => {
-      const wrapper = shallow(<MediaPlayer />);
-      const component = wrapper.dive();
-
-      expect(toJson(component)).toMatchSnapshot();
-    });
+describe('Render Test with Enzyme', () => {
+  it('Component renders without crashing', () => {
+    shallow(<PlayerButtons />);
   });
 });

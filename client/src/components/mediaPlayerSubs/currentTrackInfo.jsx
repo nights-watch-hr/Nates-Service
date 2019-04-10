@@ -1,8 +1,8 @@
 import React from 'react';
 import { CSSTransitionGroup } from 'react-transition-group';
 import DownArrowInCircleIcon from '../../../icons/downArrowInCircleIcon';
-import style from '../../../styles/currentTrackInfo';
-import animation from '../../../styles/animation';
+import style from '../../../styles/currentTrackInfo.scss';
+import animation from '../../../styles/animation.scss';
 
 const TrackInfo = props => {
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import VolumeIcon from '../../../../icons/volumeIcon';
-import style from '../../../../styles/volumeControls';
+import style from '../../../../styles/volumeControls.scss';
 
 const VolumeControls = props => {
   return (

@@ -2,7 +2,7 @@ import React from 'react';
 import StarIcon from '../../../icons/starIcon';
 import HoldBinIcon from '../../../icons/holdBinIcon';
 import PlusSignInCircleIcon from '../../../icons/plusSignInCircleIcon';
-import style from '../../../styles/playerBuyButtonMenu';
+import style from '../../../styles/playerBuyButtonMenu.scss';
 
 const PlayerBuyButtonMenu = props => {
   return (

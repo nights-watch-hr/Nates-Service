@@ -2,7 +2,7 @@ import React from 'react';
 import ClearQueue from './queueSubs/clearQueue';
 import QueuedTrack from './queueSubs/queuedTrack';
 import LargeArtwork from './queueSubs/largeArtwork';
-import style from '../../styles/popUpQueue';
+import style from '../../styles/popUpQueue.scss';
 
 const MediaPlayerWithQueue = props => {
   let conditionalArtworkStyling;

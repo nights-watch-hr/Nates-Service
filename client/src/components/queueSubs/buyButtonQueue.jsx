@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import QueueBuyButtonMenu from '../queueSubs/queueBuyButtonMenu';
 import DownArrowIcon from '../../../icons/downArrowIcon';
-import style from '../../../styles/buyButtonQueue';
+import style from '../../../styles/buyButtonQueue.scss';
 
 class BuyButton extends Component {
   constructor(props) {

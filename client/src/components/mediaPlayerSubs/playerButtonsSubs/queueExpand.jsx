@@ -1,6 +1,6 @@
 import React from 'react';
 import QueueExpandIcon from '../../../../icons/queueExpandIcon';
-import style from '../../../../styles/queueExpand';
+import style from '../../../../styles/queueExpand.scss';
 
 const QueueExpand = props => {
   return (
