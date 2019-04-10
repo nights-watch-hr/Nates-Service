@@ -1,13 +1,16 @@
 import React from 'react';
+import DownArrowInCircleIcon from '../../../icons/downArrowInCircleIcon';
+import style from '../../../styles/ClearQueue.scss';
 
 const ClearQueue = props => {
   return (
-    <div id="clear-queue-controls">
-      <a href="">Clear Queue</a>
-      <div id="close-queue-button">
-        <img src="" />
-        {/* circle with carat - beatport uses an svg here, but it may not be necessary */}
-      </div>
+    <div className={style.clearQueueContainer}>
+      <a className={style.clearQueue} onClick={props.clearQueue} href="">
+        CLEAR QUEUE
+      </a>
+      <a className={style.closeQueue} onClick={props.expandQueue} href="">
+        <DownArrowInCircleIcon />
+      </a>
     </div>
   );
 };

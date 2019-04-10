@@ -1,0 +1,41 @@
+.clearQueueContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 18px;
+  padding-left: 40px;
+  height: 30px;
+  position: fixed;
+  bottom: 317px;
+  right: 0;
+  background: linear-gradient(135deg, transparent 30px, #000 0);
+  a {
+    margin: 0 11.7px;
+    vertical-align: baseline;
+    text-decoration: none;
+    cursor: pointer;
+    font: 600 0.65em CoreSans, sans-serif;
+    letter-spacing: 0.1px;
+    color: #999999;
+  }
+}
+
+.clearQueue:hover {
+  color: hsla(0, 0%, 100%, 0.8);
+}
+
+.closeQueue {
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+  justify-content: center;
+  svg {
+    fill: #999999;
+  }
+}
+
+.closeQueue:hover {
+  svg {
+    fill: #94d500;
+  }
+}

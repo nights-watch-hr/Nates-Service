@@ -1,0 +1,128 @@
+.trackInfoDiv {
+  width: 29vw;
+  display: flex;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 900px) {
+  .trackInfoDiv {
+    width: 33vw;
+    overflow: hidden;
+  }
+}
+
+.albumArt {
+  margin: 1px 0;
+  margin-left: 0.5vw;
+  object-fit: fill;
+  width: 65px;
+}
+
+@media only screen and (max-width: 600px) {
+  .albumArt {
+    visibility: hidden;
+    width: 0;
+  }
+}
+
+.artworkToggle {
+  display: flex;
+  flex: 0 0 25px;
+  align-items: center;
+  justify-content: center;
+  padding-top: 7px;
+  padding-left: 7px;
+  padding-right: 5px;
+}
+
+.arrowUp {
+  svg {
+    fill: #999999;
+    transform: rotate(180deg);
+  }
+}
+
+.arrowDown {
+  svg {
+    fill: #999999;
+  }
+}
+
+.artworkToggle:hover {
+  svg {
+    fill: #94d500;
+  }
+}
+
+.songInfo {
+  display: flex;
+  flex: 0 3 300px;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 15px;
+  a {
+    text-decoration: none;
+  }
+  span {
+    vertical-align: baseline;
+    font-size: 13px;
+    color: #fff;
+    white-space: nowrap;
+  }
+}
+
+.songInfoWithQueue {
+  display: flex;
+  flex: 0 3 26vw;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 5px;
+  a {
+    text-decoration: none;
+  }
+  span {
+    vertical-align: baseline;
+    font-size: 13px;
+    color: #fff;
+    white-space: nowrap;
+  }
+}
+
+.title {
+  margin-top: 5px;
+  margin-bottom: 8px;
+  font: 550 1.077em/1.25 SourceSans, sans-serif;
+  letter-spacing: 1px;
+  span {
+    margin-right: 3.7px;
+  }
+}
+
+.title:hover {
+  span {
+    color: #ebebeb;
+  }
+}
+
+.version {
+  font: 100 1.077em/1.25 SourceSans, sans-serif;
+  letter-spacing: 1px;
+}
+
+.artist {
+  font: 550 1.077em/1.25 SourceSans, sans-serif;
+  letter-spacing: 1px;
+}
+
+.artist:hover {
+  color: #ebebeb;
+}
+
+.transitionGroup {
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+  justify-content: center;
+}

@@ -1,36 +1,53 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ClearQueue from './queueSubs/clearQueue';
 import QueuedTrack from './queueSubs/queuedTrack';
+import LargeArtwork from './queueSubs/largeArtwork';
+import style from '../../styles/popUpQueue.scss';
 
-class MediaPlayerWithQueue extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      artworkExpanded: false
-    };
+const MediaPlayerWithQueue = props => {
+  let conditionalArtworkStyling;
+
+  if (props.artworkEnlarged && !props.artworkEnlargedAnimation) {
+    conditionalArtworkStyling = style.queueContainerWithArtwork;
+  } else if (!props.artworkEnlarged && !props.artworkEnlargedAnimation) {
+    conditionalArtworkStyling = style.queueContainerNoArtwork;
+  } else if (props.artworkEnlargedAnimation === 'hideArt') {
+    conditionalArtworkStyling = style.hideArt;
+  } else if (props.artworkEnlargedAnimation === 'showArt') {
+    conditionalArtworkStyling = style.showArt;
   }
 
-  render() {
-    return (
-      <div id="pop-up-queue-container">
-        <div>
-          <ClearQueue />
-        </div>
-        <div id="info-list-container">
-          <a href="">
-            <img src="" />
-            {/* large album image - toggled from hidden/visible by button in media player (need to figure out how to animate it) */}
-          </a>
-          <ul id="tracks-in-queue-list">
-            {this.props.queuedTracks.map((track, index) => (
-              <QueuedTrack key={index} track={track} />
-            ))}
-            {/* map over queuedTracks here */}
-          </ul>
-        </div>
+  return (
+    <div>
+      <div>
+        <ClearQueue
+          expandQueue={props.expandQueue}
+          clearQueue={props.clearQueue}
+        />
       </div>
-    );
-  }
-}
+      <div>
+        <LargeArtwork
+          albumArt={props.albumArt}
+          artworkEnlarged={props.artworkEnlarged}
+        />
+      </div>
+      <div className={conditionalArtworkStyling}>
+        <ul id="tracks-in-queue-list">
+          {props.queuedTracks.map((track, index) => (
+            <QueuedTrack
+              key={index}
+              index={index}
+              track={track}
+              currentTrackIndex={props.currentTrackIndex}
+              removeFromQueue={props.removeFromQueue}
+              applyNewCurrentTrack={props.applyNewCurrentTrack}
+              calculateLengthInMinutes={props.calculateLengthInMinutes}
+            />
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+};
 
 export default MediaPlayerWithQueue;

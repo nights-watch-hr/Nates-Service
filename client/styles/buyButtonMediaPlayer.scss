@@ -1,0 +1,59 @@
+.buyButtonContainerMediaPlayer {
+  width: 5vw;
+  display: flex;
+  flex-wrap: nowrap;
+  min-width: 83px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+@media only screen and (max-width: 900px) {
+  .buyButtonContainerMediaPlayer {
+    position: absolute;
+    bottom: 20px;
+    right: 15px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .buyButtonContainerMediaPlayer {
+    position: absolute;
+    visibility: hidden;
+  }
+}
+
+.buyButton {
+  background: #ff499a;
+  color: #fff;
+  height: 25px;
+  top: 0;
+  margin: 0;
+  padding: 6px 8px 5px;
+  border-color: #ff499a;
+  border-radius: 3px 0 0 3px;
+  transition: background 0.2s;
+  font-family: CoreSans, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 12px;
+  letter-spacing: 0.9px;
+  vertical-align: middle;
+}
+
+.launchMenu {
+  background: #d64988;
+  color: #fff;
+  width: 25px;
+  height: 25px;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  border-color: #d64988;
+  border-radius: 0 3px 3px 0;
+  transition: background 0.2s;
+  svg {
+    fill: #fff;
+    vertical-align: middle;
+  }
+}

@@ -1,26 +1,63 @@
 import React from 'react';
+import { CSSTransitionGroup } from 'react-transition-group';
+import DownArrowInCircleIcon from '../../../icons/downArrowInCircleIcon';
+import style from '../../../styles/currentTrackInfo.scss';
+import animation from '../../../styles/animation.scss';
 
 const TrackInfo = props => {
   return (
-    <div id="current-track-info-container">
-      <div id="current-track">
-        <a href={`localhost:3737?id=${props.track.id}`}>
-          <img src={props.track.albumArt} />
-        </a>
-        <div id="artwork-toggle">
-          {/* this will be hidden if there is no queue */}
-          <img src="" />
-          {/* beatport uses an svg here for animation */}
-        </div>
-        <div id="track-info">
-          <span id="title">
-            <a href={`localhost:3737?id=${props.track.id}`}>
-              <span>{props.track.title}</span>
-              <span>{props.track.version}</span>
+    <div className={style.trackInfoDiv}>
+      <a key="artworkThumbnail" href={`localhost:3737?id=${props.track.id}`}>
+        <CSSTransitionGroup
+          transitionName={{
+            enter: animation.artworkEnter,
+            enterActive: animation.artworkEnterActive,
+            leave: animation.artworkLeave,
+            leaveActive: animation.artworkLeaveActive
+          }}
+          transitionEnterTimeout={200}
+          transitionLeaveTimeout={200}
+        >
+          {(!props.artworkEnlarged || !props.queueOpen) && (
+            <img className={style.albumArt} src={props.track.albumArt} />
+          )}
+        </CSSTransitionGroup>
+      </a>
+      <CSSTransitionGroup
+        transitionName={{
+          enter: animation.toggleEnter,
+          enterActive: animation.toggleEnterActive,
+          leave: animation.toggleLeave,
+          leaveActive: animation.toggleLeaveActive
+        }}
+        transitionEnterTimeout={200}
+        transitionLeaveTimeout={200}
+        className={style.transitionGroup}
+      >
+        {props.queueOpen && (
+          <div className={style.artworkToggle}>
+            <a
+              className={
+                props.artworkEnlarged ? style.arrowDown : style.arrowUp
+              }
+              onClick={props.expandArtwork}
+              href=""
+            >
+              <DownArrowInCircleIcon />
             </a>
-          </span>
-          <span>{props.track.artist}</span>
-        </div>
+          </div>
+        )}
+      </CSSTransitionGroup>
+      <div
+        className={props.queueOpen ? style.songInfoWithQueue : style.songInfo}
+      >
+        <span className={style.title}>
+          <a href={`localhost:3737?id=${props.track.id}`}>
+            <span>{props.track.title}</span>
+            <span className={style.version}>{props.track.version}</span>
+          </a>
+        </span>
+        <span className={style.artist}>{props.track.artist}</span>
       </div>
     </div>
   );

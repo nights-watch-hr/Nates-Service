@@ -1,14 +1,21 @@
 import React from 'react';
+import QueueExpandIcon from '../../../../icons/queueExpandIcon';
+import style from '../../../../styles/queueExpand.scss';
 
-const queueExpand = props => {
+const QueueExpand = props => {
   return (
-    <div id="queue-button-parent">
-      <a href="">
-        <img src="" />
-        {/* hamburger style icon - beatport uses an svg here, but it may not be necessary */}
+    <div
+      className={
+        props.queueOpen
+          ? style.queueExpandContainerOpen
+          : style.queueExpandContainerClosed
+      }
+    >
+      <a onClick={props.expandQueue} href="">
+        <QueueExpandIcon />
       </a>
     </div>
   );
 };
 
-export default queueExpand;
+export default QueueExpand;

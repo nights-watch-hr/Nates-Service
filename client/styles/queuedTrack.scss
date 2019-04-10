@@ -1,0 +1,157 @@
+.queuedTrack {
+  list-style: none;
+  display: flex;
+  height: 52px;
+  margin-bottom: 1px;
+  position: relative;
+}
+
+.queuedTrack:hover {
+  background-color: #262626;
+  img {
+    opacity: 0.3;
+  }
+}
+
+.currentTrack {
+  list-style: none;
+  display: flex;
+  height: 52px;
+  margin-bottom: 1px;
+  position: relative;
+  background-color: #333333;
+}
+
+.albumArtwork {
+  img {
+    height: 52px;
+    width: 51.7px;
+    position: relative;
+  }
+  svg {
+    position: absolute;
+    bottom: 11px;
+    left: 15px;
+    fill: #fff;
+  }
+}
+
+.trackInfo {
+  display: flex;
+  flex: 0 1 40vw;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding-top: 10px;
+  font-size: 12px;
+  min-width: 150px;
+  span {
+    white-space: nowrap;
+  }
+}
+
+.title {
+  margin: 0 3.7px 0 11px;
+  font: 550 1em/1.25 SourceSans, sans-serif;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.version {
+  font: 100 1em/1.25 SourceSans, sans-serif;
+  letter-spacing: 0.5px;
+  color: #fff;
+}
+
+.titleAndVersion {
+  width: min-content;
+}
+
+.titleAndVersion:hover {
+  .title {
+    color: #94d500;
+  }
+  .version {
+    color: #688727;
+  }
+}
+
+.artist {
+  width: min-content;
+  margin: 3px 11px;
+  font: 400 1.07em/1.25 SourceSans, sans-serif;
+  letter-spacing: 0.5px;
+  color: #8c8c8c;
+}
+
+.artist:hover {
+  color: #94d500;
+}
+
+.genre {
+  @extend .trackInfo;
+  flex: 0 1 16.9vw;
+  margin-right: 25px;
+  box-sizing: content-box;
+  span {
+    margin: 1.5px 0;
+    font: 100 1em/1.25 SourceSans, sans-serif;
+    letter-spacing: 0.5px;
+  }
+  .trackLength {
+    color: #8c8c8c;
+    font-size: 1.07em;
+  }
+}
+
+.genreSpan:hover {
+  color: #94d500;
+}
+
+.djInfo {
+  @extend .genre;
+  .bpm {
+    color: #8c8c8c;
+    font-size: 1.07em;
+  }
+}
+
+.label {
+  @extend .genre;
+  .releaseDate {
+    color: #8c8c8c;
+    font-size: 1.07em;
+  }
+}
+
+.labelSpan:hover {
+  color: #94d500;
+}
+
+.buyButtonContainer {
+  display: flex;
+  flex: 0 0 90px;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: baseline;
+  margin-left: 1vw;
+  padding-top: 17px;
+}
+
+.removeFromQueue {
+  display: flex;
+  flex: 0 0 37px;
+  flex-wrap: nowrap;
+  align-items: center;
+  vertical-align: middle;
+  justify-content: flex-start;
+  padding-top: 9px;
+  a {
+    svg {
+      fill: #6c6c6c;
+    }
+  }
+}

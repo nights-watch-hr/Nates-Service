@@ -1,0 +1,12 @@
+.playerButtons {
+  width: 28.5vw;
+  display: flex;
+  padding: 0 1vw 0 1.5vw;
+  button {
+    outline: none;
+    cursor: pointer;
+  }
+  a {
+    cursor: pointer;
+  }
+}

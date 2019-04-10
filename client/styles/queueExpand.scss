@@ -1,0 +1,30 @@
+.queueExpandContainerClosed {
+  width: 3.8vw;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-top: 2.5px;
+  box-sizing: content-box;
+  svg {
+    fill: #fff;
+    vertical-align: middle;
+  }
+}
+
+.queueExpandContainerOpen {
+  @extend .queueExpandContainerClosed;
+  svg {
+    fill: #a1d241;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .queueExpandContainerClosed {
+    visibility: hidden;
+    width: 0;
+  }
+  .queueExpandContainerOpen {
+    visibility: hidden;
+    width: 0;
+  }
+}

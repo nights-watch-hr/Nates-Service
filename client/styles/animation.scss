@@ -1,0 +1,71 @@
+.queueEnter {
+  opacity: 0;
+}
+.queueEnterActive {
+  opacity: 1;
+  transition: opacity 200ms ease-in;
+}
+.queueLeave {
+  opacity: 1;
+}
+.queueLeaveActive {
+  opacity: 0;
+  transition: opacity 200ms ease-in;
+}
+// .queueEnter {
+//   display: inline-block;
+//   transform: translateY(-100%);
+// }
+// .queueEnterActive {
+//   display: inline-block;
+//   transform: translateY(0%);
+//   transition: transform 500ms ease-in;
+// }
+// .queueLeave {
+//   display: inline-block;
+//   transform: translateY(0%);
+// }
+// .queueLeaveActive {
+//   transform: translateY(-100%);
+//   transition: transform 500ms ease-in;
+// }
+.artworkEnter {
+  width: 0;
+  height: 65px;
+  object-fit: fill;
+}
+.artworkEnterActive {
+  width: 65px;
+  height: 65px;
+  object-fit: fill;
+  transition: width 200ms ease;
+}
+.artworkLeave {
+  width: 65px;
+  height: 65px;
+  object-fit: fill;
+}
+.artworkLeaveActive {
+  width: 0;
+  height: 65px;
+  object-fit: fill;
+  transition: width 200ms ease;
+}
+.toggleEnter {
+  opacity: 0;
+  width: 0;
+}
+.toggleEnterActive {
+  opacity: 1;
+  width: 25px;
+  transition: opacity 200ms ease, width 200ms ease;
+}
+.toggleLeave {
+  opacity: 1;
+  width: 25px;
+}
+.toggleLeaveActive {
+  opacity: 0;
+  width: 0;
+  transition: opacity 200ms ease, width 200ms ease;
+}

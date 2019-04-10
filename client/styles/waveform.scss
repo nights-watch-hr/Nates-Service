@@ -1,0 +1,73 @@
+.waveformDiv {
+  width: 41.73vw;
+  justify-content: center;
+  position: relative;
+  a {
+    cursor: pointer;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .waveformDiv {
+    visibility: hidden;
+    width: 0;
+  }
+}
+
+.info {
+  position: absolute;
+  display: block;
+  bottom: 9px;
+  left: 0;
+  padding: 7px 10px 5px 10px;
+  margin-bottom: 1px;
+  color: hsla(0, 0%, 100%, 0.7);
+  background: rgba(0, 0, 0, 0.6);
+  font-family: CoreSans, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 12.7px;
+  letter-spacing: 0.73px;
+  cursor: default;
+}
+
+.playtimeTracker {
+  z-index: 1;
+  position: absolute;
+  svg {
+    fill: #fff;
+  }
+}
+
+.clickZone {
+  @extend .waveformDiv;
+  height: 52px;
+  position: absolute;
+  bottom: 7px;
+  left: 0;
+  z-index: 2;
+}
+
+.zoomButton {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  right: 0;
+  height: 23px;
+  width: 7px;
+  margin-top: 13px;
+  margin-right: 1px;
+  padding: 0px 15px 0 7px;
+  background: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  svg {
+    fill: #fff;
+    vertical-align: middle;
+  }
+}
+
+.waveformCanvas {
+  position: absolute;
+  width: 41.73vw;
+  height: 90px;
+  z-index: 0;
+}
