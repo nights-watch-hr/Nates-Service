@@ -30,7 +30,7 @@ class MediaPlayer extends Component {
           albumArt:
             'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Album+Art/Riviera-Kartell.jpg',
           waveform:
-            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/SoundWaves/Riviera-Kartell.svg',
+            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Waveforms/Riviera-Kartell.svg',
           mp3:
             'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/mp3s/04+Riviera.m4a'
         },
@@ -50,7 +50,7 @@ class MediaPlayer extends Component {
           albumArt:
             'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Album+Art/Sapphire-Kartell.jpg',
           waveform:
-            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/SoundWaves/Last_Call-Riviera.svg',
+            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Waveforms/Last_Call-Riviera.svg',
           mp3:
             'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/mp3s/07+Last+Call.m4a'
         },
@@ -70,7 +70,7 @@ class MediaPlayer extends Component {
           albumArt:
             'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Album+Art/Romance_EP-Darius.jpg',
           waveform:
-            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/SoundWaves/Espoir-Darius.svg',
+            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Waveforms/Espoir-Darius.svg',
           mp3:
             'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/mp3s/01+Espoir.m4a'
         },
@@ -90,7 +90,7 @@ class MediaPlayer extends Component {
           albumArt:
             'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Album+Art/Romance_EP-Darius.jpg',
           waveform:
-            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/SoundWaves/Omeo-Darius.svg',
+            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Waveforms/Omeo-Darius.svg',
           mp3:
             'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/mp3s/03+Omeo.m4a'
         },
@@ -110,7 +110,7 @@ class MediaPlayer extends Component {
           albumArt:
             'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Album+Art/Romance_EP-Darius.jpg',
           waveform:
-            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/SoundWaves/Vanyll-Darius.svg',
+            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Waveforms/Vanyll-Darius.svg',
           mp3:
             'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/mp3s/05+Vanyll.m4a'
         }
