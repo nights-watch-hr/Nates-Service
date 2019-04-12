@@ -6,6 +6,7 @@ const trackSchema = mongoose.Schema({
   title: { type: String, allowNull: false },
   version: { type: String, allowNull: false },
   artist: { type: String, allowNull: false },
+  album: { type: String, allowNull: false },
   remixers: { type: String, allowNull: true },
   genre: { type: String, allowNull: false },
   label: { type: String, allowNull: false },
@@ -13,7 +14,10 @@ const trackSchema = mongoose.Schema({
   key: { type: String, allowNull: false },
   bpm: { type: Number, allowNull: false },
   length: { type: Number, allowNull: false },
-  price: { type: Number, allowNull: false }
+  price: { type: Number, allowNull: false },
+  albumArt: { type: String, allowNull: false },
+  waveform: { type: String, allowNull: false },
+  mp3: { type: String, allowNull: false }
 });
 
 const Track = mongoose.model('Track', trackSchema);
