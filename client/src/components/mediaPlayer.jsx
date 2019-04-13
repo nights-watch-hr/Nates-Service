@@ -14,27 +14,27 @@ class MediaPlayer extends Component {
       currentTrack: null,
       currentTrackIndex: 0,
       queuedTracks: [
-        {
-          id: 1,
-          title: 'Riviera',
-          version: 'Original Mix',
-          artist: 'Kartell',
-          album: 'Riviera',
-          remixers: null,
-          genre: 'Indie Dance / Nu Disco',
-          label: 'Roche Musique',
-          released: '2012-05-21',
-          key: 'A min',
-          bpm: 122,
-          length: 327,
-          price: 1.49,
-          albumArt:
-            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Album+Art/Riviera-Kartell.jpg',
-          waveform:
-            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Waveforms/Riviera-Kartell.svg',
-          mp3:
-            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/mp3s/04+Riviera.m4a'
-        }
+        // {
+        //   id: 1,
+        //   title: 'Riviera',
+        //   version: 'Original Mix',
+        //   artist: 'Kartell',
+        //   album: 'Riviera',
+        //   remixers: null,
+        //   genre: 'Indie Dance / Nu Disco',
+        //   label: 'Roche Musique',
+        //   released: '2012-05-21',
+        //   key: 'A min',
+        //   bpm: 122,
+        //   length: 327,
+        //   price: 1.49,
+        //   albumArt:
+        //     'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Album+Art/Riviera-Kartell.jpg',
+        //   waveform:
+        //     'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Waveforms/Riviera-Kartell.svg',
+        //   mp3:
+        //     'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/mp3s/04+Riviera.m4a'
+        // }
       ],
       playTime: 0,
       playState: null,

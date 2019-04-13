@@ -6,7 +6,7 @@ const dbHelpers = {
   },
 
   getOne: id => {
-    return Track.findById({ id });
+    return Track.findOne({ id });
   }
 };
 
