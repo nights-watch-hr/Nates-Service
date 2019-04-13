@@ -20,6 +20,7 @@ class MediaPlayer extends Component {
           version: 'Original Mix',
           artist: 'Kartell',
           album: 'Riviera',
+          remixers: null,
           genre: 'Indie Dance / Nu Disco',
           label: 'Roche Musique',
           released: '2012-05-21',
@@ -33,86 +34,6 @@ class MediaPlayer extends Component {
             'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Waveforms/Riviera-Kartell.svg',
           mp3:
             'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/mp3s/04+Riviera.m4a'
-        },
-        {
-          id: 2,
-          title: 'Last Call',
-          version: 'Original Mix',
-          artist: 'Kartell',
-          album: 'Sapphire',
-          genre: 'Indie Dance / Nu Disco',
-          label: 'Roche Musique',
-          released: '2014-01-06',
-          key: 'D min',
-          bpm: 130,
-          length: 176,
-          price: 1.49,
-          albumArt:
-            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Album+Art/Sapphire-Kartell.jpg',
-          waveform:
-            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Waveforms/Last_Call-Riviera.svg',
-          mp3:
-            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/mp3s/07+Last+Call.m4a'
-        },
-        {
-          id: 3,
-          title: 'Espoir',
-          version: 'Original Mix',
-          artist: 'Darius',
-          album: 'Romance EP',
-          genre: 'Indie Dance / Nu Disco',
-          label: 'Roche Musique',
-          released: '2014-02-24',
-          key: 'E♭ min',
-          bpm: 143,
-          length: 242,
-          price: 1.49,
-          albumArt:
-            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Album+Art/Romance_EP-Darius.jpg',
-          waveform:
-            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Waveforms/Espoir-Darius.svg',
-          mp3:
-            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/mp3s/01+Espoir.m4a'
-        },
-        {
-          id: 4,
-          title: 'Omeo',
-          version: 'Original Mix',
-          artist: 'Darius',
-          album: 'Romance EP',
-          genre: 'Indie Dance / Nu Disco',
-          label: 'Roche Musique',
-          released: '2014-02-24',
-          key: 'D♭ maj',
-          bpm: 112,
-          length: 210,
-          price: 1.49,
-          albumArt:
-            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Album+Art/Romance_EP-Darius.jpg',
-          waveform:
-            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Waveforms/Omeo-Darius.svg',
-          mp3:
-            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/mp3s/03+Omeo.m4a'
-        },
-        {
-          id: 5,
-          title: 'Vanyll',
-          version: 'Original Mix',
-          artist: 'Darius',
-          album: 'Romance EP',
-          genre: 'Indie Dance / Nu Disco',
-          label: 'Roche Musique',
-          released: '2014-02-24',
-          key: 'A min',
-          bpm: 110,
-          length: 240,
-          price: 1.49,
-          albumArt:
-            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Album+Art/Romance_EP-Darius.jpg',
-          waveform:
-            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Waveforms/Vanyll-Darius.svg',
-          mp3:
-            'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/mp3s/05+Vanyll.m4a'
         }
       ],
       playTime: 0,
@@ -178,12 +99,14 @@ class MediaPlayer extends Component {
   }
 
   applyFirstTrack() {
-    let currentTrack = this.state.queuedTracks[0];
-    clearInterval(this.timer);
-    clearInterval(this.checkEnd);
-    this.setState({ currentTrack, currentTrackIndex: 0, playTime: 0 }, () => {
-      this.currentTrack.load();
-    });
+    if (this.state.queuedTracks.length) {
+      let currentTrack = this.state.queuedTracks[0];
+      clearInterval(this.timer);
+      clearInterval(this.checkEnd);
+      this.setState({ currentTrack, currentTrackIndex: 0, playTime: 0 }, () => {
+        this.currentTrack.load();
+      });
+    }
   }
 
   applyNewCurrentTrack(e, index) {
