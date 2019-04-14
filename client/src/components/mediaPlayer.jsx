@@ -210,9 +210,12 @@ class MediaPlayer extends Component {
       JSON.stringify(this.state.queuedTracks[index]) !==
       JSON.stringify(this.state.currentTrack)
     ) {
-      let { queuedTracks } = this.state;
+      let { queuedTracks, currentTrackIndex } = this.state;
       queuedTracks.splice(index, 1);
-      this.setState({ queuedTracks });
+      if (currentTrackIndex > index) {
+        currentTrackIndex -= 1;
+      }
+      this.setState({ queuedTracks, currentTrackIndex });
     } else if (this.state.queuedTracks.length === 1) {
       this.setState({ currentTrack: null, playState: null });
     }
@@ -229,11 +232,11 @@ class MediaPlayer extends Component {
   }
 
   playSong() {
-    clearInterval(this.timer);
-    clearInterval(this.checkEnd);
     this.currentTrack
       .play()
       .then(() => {
+        clearInterval(this.timer);
+        clearInterval(this.checkEnd);
         this.setState({ playState: 'playing' }, () => {
           this.timer = setInterval(this.trackTime, 300);
           this.checkEnd = setInterval(this.checkSongEnd, 1000);
