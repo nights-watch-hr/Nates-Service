@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon server/index",
     "seed": "node server/seed",
-    "build": "webpack -d --w",
+    "build": "webpack -d --w --env.API_URL=https://localhost:3737 --config webpack.config.js",
     "test": "jest",
     "test:watch": "jest --watch"
   },
@@ -17,6 +17,7 @@
     "axios": "^0.18.0",
     "bluebird": "^3.5.3",
     "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
     "css-loader": "^2.1.1",
     "express": "^4.16.4",
     "mongoose": "^5.4.19",
@@ -38,7 +39,6 @@
     "@babel/preset-react": "^7.0.0",
     "babel-jest": "^24.7.1",
     "babel-loader": "^8.0.5",
-    "dotenv": "^7.0.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.12.1",
     "enzyme-to-json": "^3.3.5",

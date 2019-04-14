@@ -6,6 +6,7 @@ import PlayerButtons from './mediaPlayerSubs/playerButtons';
 import PopUpQueue from './popUpQueue';
 import style from '../../styles/mediaPlayer.scss';
 import animation from '../../styles/animation.scss';
+import axios from 'axios';
 
 class MediaPlayer extends Component {
   constructor(props) {
@@ -13,29 +14,7 @@ class MediaPlayer extends Component {
     this.state = {
       currentTrack: null,
       currentTrackIndex: 0,
-      queuedTracks: [
-        // {
-        //   id: 1,
-        //   title: 'Riviera',
-        //   version: 'Original Mix',
-        //   artist: 'Kartell',
-        //   album: 'Riviera',
-        //   remixers: null,
-        //   genre: 'Indie Dance / Nu Disco',
-        //   label: 'Roche Musique',
-        //   released: '2012-05-21',
-        //   key: 'A min',
-        //   bpm: 122,
-        //   length: 327,
-        //   price: 1.49,
-        //   albumArt:
-        //     'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Album+Art/Riviera-Kartell.jpg',
-        //   waveform:
-        //     'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/Waveforms/Riviera-Kartell.svg',
-        //   mp3:
-        //     'https://s3-us-west-1.amazonaws.com/airbnbeats/Database+Media/mp3s/04+Riviera.m4a'
-        // }
-      ],
+      queuedTracks: [],
       playTime: 0,
       playState: null,
       queueOpen: false,
@@ -43,6 +22,9 @@ class MediaPlayer extends Component {
       artworkEnlarged: true,
       artworkEnlargedAnimation: null
     };
+    this.getTrackToPlay = this.getTrackToPlay.bind(this);
+    this.getTrackToQueue = this.getTrackToQueue.bind(this);
+    this.checkDupes = this.checkDupes.bind(this);
     this.expandQueue = this.expandQueue.bind(this);
     this.expandArtwork = this.expandArtwork.bind(this);
     this.calculateLengthInMinutes = this.calculateLengthInMinutes.bind(this);
@@ -61,12 +43,103 @@ class MediaPlayer extends Component {
     this.adjustVolume = this.adjustVolume.bind(this);
     this.currentTrack;
     this.timer;
+    this.checkPlay;
     this.checkEnd;
   }
 
   componentDidMount() {
     this.applyFirstTrack();
     document.addEventListener('keydown', this.shortcutListener);
+    document
+      .getElementById('body')
+      .addEventListener('click', this.getTrackToPlay);
+    document
+      .getElementById('body')
+      .addEventListener('click', this.getTrackToQueue);
+  }
+
+  getTrackToPlay() {
+    setTimeout(
+      () =>
+        axios
+          .get('http://localhost:3737/api/trackToPlay')
+          .then(response => {
+            let { data } = response;
+            let { queuedTracks } = this.state;
+            this.currentTrack = data;
+            if (data && !this.checkDupes(data)) {
+              queuedTracks.push(data);
+              this.setState(
+                {
+                  currentTrack: data,
+                  currentTrackIndex: queuedTracks.length - 1,
+                  queuedTracks,
+                  playTime: 0
+                },
+                () => {
+                  this.currentTrack.load();
+                  this.playSong();
+                }
+              );
+            } else if (data) {
+              let trackIndex;
+              for (let i = 0; i < queuedTracks.length; i++) {
+                if (JSON.stringify(queuedTracks[i]) === JSON.stringify(data)) {
+                  trackIndex = i;
+                }
+              }
+              this.setState(
+                {
+                  currentTrack: data,
+                  currentTrackIndex: trackIndex,
+                  playTime: 0
+                },
+                () => {
+                  this.currentTrack.load();
+                  this.playSong();
+                }
+              );
+            }
+          })
+          .catch(err => console.log(err)),
+      300
+    );
+  }
+
+  getTrackToQueue() {
+    setTimeout(
+      () =>
+        axios
+          .get('http://localhost:3737/api/trackToQueue')
+          .then(response => {
+            let { data } = response;
+            if (data && !this.state.queuedTracks.length) {
+              let { queuedTracks } = this.state;
+              queuedTracks.push(data);
+              this.setState({
+                currentTrack: data,
+                currentTrackIndex: 0,
+                queuedTracks
+              });
+            } else if (data && !this.checkDupes(data)) {
+              let { queuedTracks } = this.state;
+              queuedTracks.push(data);
+              this.setState({ queuedTracks });
+            }
+          })
+          .catch(err => console.log(err)),
+      300
+    );
+  }
+
+  checkDupes(song) {
+    let queue = this.state.queuedTracks;
+    for (let i = 0; i < queue.length; i++) {
+      if (JSON.stringify(song) === JSON.stringify(queue[i])) {
+        return true;
+      }
+    }
+    return false;
   }
 
   expandQueue(e) {
@@ -112,8 +185,6 @@ class MediaPlayer extends Component {
   applyNewCurrentTrack(e, index) {
     e.preventDefault();
     let currentTrack = this.state.queuedTracks[index];
-    clearInterval(this.timer);
-    clearInterval(this.checkEnd);
     this.setState(
       { currentTrack, currentTrackIndex: index, playTime: 0 },
       () => {
@@ -149,36 +220,39 @@ class MediaPlayer extends Component {
 
   clearQueue(e) {
     e.preventDefault();
+    clearInterval(this.timer);
+    clearInterval(this.checkEnd);
     this.setState({
       currentTrack: null,
-      songsInQueue: null
+      queuedTracks: []
     });
   }
 
   playSong() {
+    clearInterval(this.timer);
+    clearInterval(this.checkEnd);
     this.currentTrack
       .play()
       .then(() => {
-        this.setState({ playState: 'playing' });
-        this.timer = setInterval(this.trackTime, 300);
-        this.checkEnd = setInterval(this.checkSongEnd, 1000);
+        this.setState({ playState: 'playing' }, () => {
+          this.timer = setInterval(this.trackTime, 300);
+          this.checkEnd = setInterval(this.checkSongEnd, 1000);
+        });
       })
       .catch(err => err);
   }
 
   pauseSong() {
     this.currentTrack.pause();
-    this.setState({ playState: 'paused' });
     clearInterval(this.timer);
     clearInterval(this.checkEnd);
+    this.setState({ playState: 'paused' });
   }
 
   previousSong() {
     if (this.state.currentTrackIndex !== 0) {
       let previousTrackIndex = this.state.currentTrackIndex - 1;
       let currentTrack = this.state.queuedTracks[previousTrackIndex];
-      clearInterval(this.timer);
-      clearInterval(this.checkEnd);
       this.setState(
         { currentTrack, currentTrackIndex: previousTrackIndex, playTime: 0 },
         () => {
@@ -193,8 +267,6 @@ class MediaPlayer extends Component {
     if (this.state.currentTrackIndex !== this.state.queuedTracks.length - 1) {
       let nextTrackIndex = this.state.currentTrackIndex + 1;
       let currentTrack = this.state.queuedTracks[nextTrackIndex];
-      clearInterval(this.timer);
-      clearInterval(this.checkEnd);
       this.setState(
         { currentTrack, currentTrackIndex: nextTrackIndex, playTime: 0 },
         () => {
@@ -260,7 +332,7 @@ class MediaPlayer extends Component {
   }
 
   render() {
-    if (this.state.currentTrack) {
+    if (this.state.queuedTracks.length) {
       return (
         <div>
           <CSSTransitionGroup
