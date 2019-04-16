@@ -62,7 +62,7 @@ class MediaPlayer extends Component {
     setTimeout(
       () =>
         axios
-          .get('http://localhost:3737/api/trackToPlay')
+          .get('http://3.84.119.45:3737/api/trackToPlay')
           .then(response => {
             let { data } = response;
             let { queuedTracks } = this.state;
@@ -110,7 +110,7 @@ class MediaPlayer extends Component {
     setTimeout(
       () =>
         axios
-          .get('http://localhost:3737/api/trackToQueue')
+          .get('http://3.84.119.45:3737/api/trackToQueue')
           .then(response => {
             let { data } = response;
             if (data && !this.state.queuedTracks.length) {
