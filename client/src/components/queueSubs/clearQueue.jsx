@@ -1,6 +1,6 @@
 import React from 'react';
 import DownArrowInCircleIcon from '../../../icons/downArrowInCircleIcon';
-import style from '../../../styles/ClearQueue.scss';
+import style from '../../../styles/clearQueue.scss';
 
 const ClearQueue = props => {
   return (
