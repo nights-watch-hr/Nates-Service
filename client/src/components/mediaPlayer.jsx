@@ -282,6 +282,7 @@ class MediaPlayer extends Component {
 
   shortcutListener(e) {
     if (e.code === 'Space') {
+      e.preventDefault();
       if (
         (this.state.playState === null && this.state.currentTrack) ||
         this.state.playState === 'paused'
