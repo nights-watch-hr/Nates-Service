@@ -130,12 +130,12 @@ class MediaPlayer extends Component {
   componentDidMount() {
     this.applyFirstTrack();
     document.addEventListener('keydown', this.shortcutListener);
-    // document
-    //   .getElementById('body')
-    //   .addEventListener('click', this.getTrackToPlay);
-    // document
-    //   .getElementById('body')
-    //   .addEventListener('click', this.getTrackToQueue);
+    document
+      .getElementById('body')
+      .addEventListener('click', this.getTrackToPlay);
+    document
+      .getElementById('body')
+      .addEventListener('click', this.getTrackToQueue);
   }
 
   getTrackToPlay() {
