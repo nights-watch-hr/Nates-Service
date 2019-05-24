@@ -35,9 +35,7 @@
   font-family: CoreSans, sans-serif;
   font-size: 12px;
   font-weight: 600;
-  line-height: 12px;
   letter-spacing: 0.9px;
-  vertical-align: middle;
 }
 
 .launchMenu {
@@ -49,6 +47,7 @@
   margin: 0;
   padding: 0;
   position: relative;
+  vertical-align: top;
   border-color: #d64988;
   border-radius: 0 3px 3px 0;
   transition: background 0.2s;
