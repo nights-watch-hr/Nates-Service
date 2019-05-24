@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const Track = require('../database/model');
 const trackList = require('../data.json');
 
@@ -7,7 +8,10 @@ const seedTracks = () => {
       console.log('Track list successfully added');
       mongoose.connection.close();
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      console.log(err);
+      mongoose.connection.close();
+    });
 };
 
 seedTracks();
